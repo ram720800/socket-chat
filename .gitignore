@@ -1,0 +1,11 @@
+# Ignore Node.js dependencies
+socket-chat-fe/node_modules/
+socket-chat-be/node_modules/
+
+# Ignore environment files
+socket-chat-fe/.env
+socket-chat-be/.env
+
+
+# Ignore VS Code settings
+.vscode/

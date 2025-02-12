@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-montserrat: "Montserrat", serif;
+
+  --color-b1: #5865f2;
+  --color-db2: #404eed;
+  --color-dg3: #23272a;
+  --color-lg4: #99aab5;
+  --color-w5: #ffffff;
+  --color-g1: #57f287;
+  --color-y2: #fee75c;
+  --color-r3: #ed4245;
+  --color-bl1: #202225;
+  --color-bl2: #2B2D31;
+  --color-bl3: #313338;
+  --color-wl1: #E3E5E8;
+  --color-wl2: #F2F3F5;
+  --color-wl3: #B6B9BE;
+
+  /* Black shades */
+  --color-black: #000000;
+  --color-black-100: #05091d;
+}
+
+  html {
+    background-color: var(--color-);
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  button {
+    background: none;
+    letter-spacing: -0.03em;
+  }
+
+  input {
+    letter-spacing: -0.03em;
+  }
+
+ /* START of Typography */
+  
+ .h1 {
+  font-size: 84px;
+  font-weight: 900;
+  line-height: 84px;
+  letter-spacing: -0.03em;
+}
+
+.h2 {
+  font-size: 64px;
+  font-weight: 900;
+  line-height: 64px;
+  font-family: var(--font-montserrat);
+}
+
+.h3 {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 56px;
+  letter-spacing: -0.02em;
+}
+
+.h4 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 52px;
+}
+
+.h5 {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+}
+
+.body-1 {
+  font-size: 16px;
+  line-height: 36px;
+  font-family: var(--font-montserrat);
+  letter-spacing: 0.05em;
+}
+
+.body-2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.body-3 {
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.02em;
+}
+
+.base {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+}
+
+.base-bold {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.base-small {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+}
+
+.small-1 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+}
+
+.small-2 {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  letter-spacing: 0.3em;
+}
+
+.small-compact {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.03em;
+}
+
+/* END of Typography */
+
+ /* START of Gradients */
+
+ .g1 {
+  background: linear-gradient(90deg, #8ea1e1, #7289da, #5865F2);
+}
+ .g2 {
+  background: linear-gradient(#23272a, #7E61FF 100%, #6668EB 0%);
+}
+.g3{
+  background: linear-gradient(#CD83CB, #B674F1);
+}
+.g4{
+  background: linear-gradient(#4E1BF5, #5E4EEE);
+}
+
