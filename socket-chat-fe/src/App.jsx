@@ -9,6 +9,7 @@ import { ChatingPage } from "./pages/ChatingPage";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import { Loader } from "lucide-react";
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   const { authUser, me, isMeAuth } = useAuthStore();
@@ -33,11 +34,11 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route
           path="/signup"
-          element={!authUser ? <SignUpPage /> : <Navigate to="/chat" />}
+          element={!authUser ? <SignUpPage type="signup" /> : <Navigate to="/chat" />}
         />
         <Route
           path="/signin"
-          element={!authUser ? <SignInPage /> : <Navigate to="/chat" />}
+          element={!authUser ? <SignInPage type="signin" /> : <Navigate to="/chat" />}
         />
         <Route
           path="/profile"
@@ -48,6 +49,8 @@ function App() {
           element={authUser ? <ChatingPage /> : <Navigate to="/signin" />}
         />
       </Routes>
+
+      <Toaster/>
     </div>
   );
 }

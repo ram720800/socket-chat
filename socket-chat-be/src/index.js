@@ -10,13 +10,18 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ credentials: true, origin: process.env.CLIENT_URL }));
+app.use(
+  cors({
+    origin: true,
+    credentials: true,
+  })
+);
 
 app.use("/api/auth", authRouter);
 app.use("/api/message", messageRouter);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-    connectDB();
+  console.log(`Server is running on http://localhost:${PORT}`);
+  connectDB();
 });
