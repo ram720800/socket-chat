@@ -163,6 +163,12 @@
   background: linear-gradient(#4E1BF5, #5E4EEE);
 }
 
+@layer components {
+  .container {
+    @apply mx-auto max-w-[1252px] px-16 max-xl:px-10 max-lg:px-6 max-sm:px-4;
+  }
+}
+
 :root {
   --background: hsl(0 0% 100%);
   --foreground: hsl(20 14.3% 4.1%);

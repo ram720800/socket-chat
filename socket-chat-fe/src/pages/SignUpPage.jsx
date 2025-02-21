@@ -13,7 +13,7 @@ import { Eye, EyeOff, Loader } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore.js";
 import toast from "react-hot-toast";
 
-export const SignUpPage = ({ type }) => {
+export const SignUpPage = () => {
   const [show, setShow] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -47,17 +47,17 @@ export const SignUpPage = ({ type }) => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
-      <Card className="w-[350px] ">
+    <div className="flex justify-center items-center min-h-screen g2">
+      <div className="bg-[url('/sc_bg_img.png')] bg-cover bg-center h-screen w-full absolute"></div>
+      <Card className="w-[350px] z-20 ">
         <CardHeader>
           <CardTitle className="text-center">
-            {type === "signup" ? " Create an account" : "Sign In"}
+          Create an account
           </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <span className="font-medium">Full Name</span>
-            {type === "signup" && (
               <Input
                 type="text"
                 name="fullName"
@@ -66,7 +66,6 @@ export const SignUpPage = ({ type }) => {
                 onChange={handleChange}
                 required
               />
-            )}
             <span className="font-medium">Email</span>
             <Input
               type="email"
@@ -121,6 +120,6 @@ export const SignUpPage = ({ type }) => {
           </p>
         </CardFooter>
       </Card>
-    </div>
+      </div>
   );
 };

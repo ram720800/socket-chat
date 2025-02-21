@@ -12,7 +12,7 @@ authRouter.post("/signin", signin);
 
 authRouter.post("/logout", logout);
 
-authRouter.get("/update", protectRoute, update);
+authRouter.put("/update", protectRoute, update);
 
 authRouter.get("/me", protectRoute, me);
 
