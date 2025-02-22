@@ -11,6 +11,7 @@ import { useAuthStore } from "../store/useAuthStore.js";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Loader } from "lucide-react";
+import { AnimatedBG1 } from "../components/Animation.jsx";
 
 export const SignInPage = () => {
   const [show, setShow] = useState(false);
@@ -33,17 +34,27 @@ export const SignInPage = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen g2">
-      <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute"></div>
-      <Card className="w-[350px] z-20">
+      <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute">
+        <AnimatedBG1 />
+      </div>
+
+      <Card className="w-[400px] z-20 bg-[var(--color-bl2)] border-none ">
         <CardHeader>
-          <CardTitle className="text-center">Welcome back!</CardTitle>
-          <span className="text-sm text-center">
+          <CardTitle className="text-center text-[var(--color-wl2)] text-2xl font-bold">
+            Welcome back!
+          </CardTitle>
+          <span className="text-sm text-center text-[var(--color-wl2)]">
             We're so excited to see you again!
           </span>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            <span className="font-medium">Email</span>
+            <span className="text-xs font-bold uppercase text-[var(--color-wl3)]">
+              Email
+            </span>
+            <span className="size-4 rounded-full absolute text-[var(--color-r3)]">
+              *
+            </span>
             <Input
               type="email"
               name="email"
@@ -51,32 +62,38 @@ export const SignInPage = () => {
               value={formData.email}
               onChange={handleChange}
               required
+              className="border-none bg-[var(--color-bl1)]"
             />
-            <span className="font-medium">Password</span>
+            <span className="text-xs font-bold uppercase text-[var(--color-wl3)]">
+              Password
+            </span>
+            <span className="size-4 rounded-full absolute text-[var(--color-r3)]">
+              *
+            </span>
             <Input
               type={show ? "text" : "password"}
               name="password"
-              placeholder="Shhh! Tis is super secret"
+              placeholder="Shhh! This is super secret"
               value={formData.password}
               onChange={handleChange}
               required
-              className="relative"
+              className="relative border-none bg-[var(--color-bl1)]"
             />
             <button
               type="button"
-              className="absolute -translate-y-10 translate-x-[17rem]"
+              className="absolute -translate-y-10 translate-x-[20rem]"
               onClick={() => setShow(!show)}
             >
               {show ? (
-                <EyeOff className="size-4" />
+                <EyeOff className="size-4 text-[var(--color-wl3)]" />
               ) : (
-                <Eye className="size-4" />
+                <Eye className="size-4 text-[var(--color-wl3)]" />
               )}
             </button>
             <Button
               varient="default"
               type="submit"
-              className="w-full text-bl2"
+              className="w-full !bg-[var(--color-b1)] hover:!bg-[var(--color-db2)]"
               disabled={isSigningIn}
             >
               {isSigningIn ? (
@@ -89,8 +106,8 @@ export const SignInPage = () => {
             </Button>
           </form>
         </CardContent>
-        <CardFooter className="text-sm text-center">
-          <p>
+        <CardFooter className="text-sm text-center -mt-5">
+          <p className="text-[var(--color-wl3)]">
             Need an account?
             <Link to="/signup" className="text-blue-400 hover:underline">
               Register

@@ -151,7 +151,7 @@
  /* START of Gradients */
 
  .g1 {
-  background: linear-gradient(90deg, #8ea1e1, #7289da, #5865F2);
+  background: linear-gradient(90deg, #8ea1e1, #7289da, #5865F2,);
 }
  .g2 {
   background: linear-gradient(#23272a, #7E61FF 100%, #6668EB 0%);
@@ -170,6 +170,7 @@
 }
 
 :root {
+  --color-b1: #5865f2;
   --background: hsl(0 0% 100%);
   --foreground: hsl(20 14.3% 4.1%);
   --card: hsl(0 0% 100%);
