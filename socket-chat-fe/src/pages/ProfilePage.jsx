@@ -8,6 +8,7 @@ import {
 import { useAuthStore } from "../store/useAuthStore.js";
 import { useEffect, useState } from "react";
 import { Camera } from "lucide-react";
+import { Loader } from "lucide-react";
 
 export const ProfilePage = () => {
   const { authUser, updating, isUpdating } = useAuthStore();
@@ -42,7 +43,7 @@ export const ProfilePage = () => {
   return (
     <div className="flex justify-center items-center w-full min-h-screen g2">
       <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute ]"></div>
-      <Card className="w-[360px] z-20 bg-[var(--color-bl2)] border-none ">
+      <Card className="w-[360px] z-20 bg-[var(--color-bl2)] border-none mt-4 fixed max-lg:mt-10 max-lg:w-[300px]">
         <CardHeader>
           <CardTitle className="text-center font-bold  text-[var(--color-wl2)] text-2xl">
             Profile
@@ -76,24 +77,50 @@ export const ProfilePage = () => {
             </label>
           </div>
           <p className="text-center text-sm text-[var(--color-wl2)]">
-            {isUpdating ? "working on it....." : "Click on the camera"}
+            {isUpdating ? (
+              <>
+                <Loader className="s-10 animate-spin" />
+              </>
+            ) : (
+              ""
+            )}
           </p>
-        </CardContent>
-        <CardFooter className="space-y-2">
-          <div className="flex justify-evenly items-center rounded-sm bg-[var(--color-bl1)] w-auto p-2 mx-auto">
-          <img
-            src={selectedImg || authUser.profilePic || avatar}
-            alt="user Avatar"
-            className="size-8 rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
-          />
-          <span className=" absolute size-2 bg-[var(--color-g1)] rounded-full -translate-x-[5.6rem] translate-y-[0.8rem] " />
-          <p className="text-[var(--color-wl2)] text-sm font-bold mx-3">
-            {authUser?.fullName}
-          </p>
-          <span className="text-[var(--color-wl3)] text-xs">
-            {authUser?.email}
-            </span>
+          <div className="space-y-4">
+            <div className="flex flex-row items-center rounded-sm bg-[var(--color-bl1)] w-auto p-2 mx-auto">
+              <div>
+                <img
+                  src={selectedImg || authUser.profilePic || avatar}
+                  alt="user Avatar"
+                  className="size-8 rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
+                />
+                <span className=" absolute size-4 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]  translate-x-[1.2rem] -translate-y-[0.7rem]" />
+              </div>
+
+              <div className="flex flex-col ml-4 items-start">
+                <span className="text-[var(--color-wl2)] text-sm font-medium mx-3 -ml-0">
+                  {authUser?.fullName}
+                </span>
+                <span className="text-[var(--color-wl3)] text-xs">
+                  {authUser?.email}
+                </span>
+              </div>
             </div>
+          </div>
+        </CardContent>
+        <CardFooter>
+          <div className="bg-[var(--color-bl1)] w-auto mx-auto pr-20 p-2 rounded-sm">
+            <p className="text-[var(--color-wl2)] font-medium text-sm text-start">
+              Member Since
+            </p>
+            <div className="flex mt-2">
+              <div>
+                <img src="/sc_mini.svg" alt="mini" className="w-4 h-4 mr-2" />
+              </div>
+              <p className="text-[var(--color-wl3)] text-xs text-start ">
+                {authUser.createdAt?.split("T")[0]}
+              </p>
+            </div>
+          </div>
         </CardFooter>
       </Card>
     </div>

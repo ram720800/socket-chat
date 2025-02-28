@@ -38,7 +38,7 @@ export const SignInPage = () => {
         <AnimatedBG1 />
       </div>
 
-      <Card className="w-[400px] z-20 bg-[var(--color-bl2)] border-none ">
+      <Card className="w-[400px] z-20 bg-[var(--color-bl2)] border-none mt-4 fixed max-lg:mt-6 max-lg:w-[300px]">
         <CardHeader>
           <CardTitle className="text-center text-[var(--color-wl2)] text-2xl font-bold">
             Welcome back!
@@ -81,7 +81,7 @@ export const SignInPage = () => {
             />
             <button
               type="button"
-              className="absolute -translate-y-10 translate-x-[20rem]"
+              className="absolute -translate-y-10 translate-x-[20rem] max-lg:translate-x-[14rem]"
               onClick={() => setShow(!show)}
             >
               {show ? (

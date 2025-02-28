@@ -1,5 +1,5 @@
 import { Input } from "@/components/ui/input";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -54,7 +54,7 @@ export const SignUpPage = () => {
       <div className="bg-[url('/sc_bg_img.png')] bg-cover bg-center h-screen w-full absolute">
         <AnimatedBG2 />
       </div>
-      <Card className="w-[400px] z-20 bg-[var(--color-bl2)] border-none ">
+      <Card className="w-[400px] z-20 bg-[var(--color-bl2)] border-none mt-4 fixed max-lg:mt-6 max-lg:w-[300px]">
         <CardHeader>
           <CardTitle className="text-center text-[var(--color-wl2)] text-2xl font-bold">
             Create an account
@@ -101,7 +101,7 @@ export const SignUpPage = () => {
             <Input
               type={show ? "text" : "password"}
               name="password"
-              placeholder="Shhh! Tis is super secret"
+              placeholder="Shhh! This is super secret"
               value={formData.password}
               onChange={handleChange}
               required
@@ -109,7 +109,7 @@ export const SignUpPage = () => {
             />
             <button
               type="button"
-              className="absolute -translate-y-10 translate-x-[20rem]"
+              className="absolute -translate-y-10 translate-x-[20rem] max-lg:translate-x-[14rem]"
               onClick={() => setShow(!show)}
             >
               {show ? (

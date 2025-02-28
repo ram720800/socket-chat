@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 @plugin 'tailwindcss-animate';
 
@@ -18,42 +18,43 @@
   --color-y2: #fee75c;
   --color-r3: #ed4245;
   --color-bl1: #202225;
-  --color-bl2: #2B2D31;
+  --color-bl2: #2b2d31;
   --color-bl3: #313338;
-  --color-wl1: #E3E5E8;
-  --color-wl2: #F2F3F5;
-  --color-wl3: #B6B9BE;
+  --color-wl1: #e3e5e8;
+  --color-wl2: #f2f3f5;
+  --color-wl3: #b6b9be;
 
   /* Black shades */
   --color-black: #000000;
   --color-black-100: #05091d;
 }
 
-  html {
-    background-color: var(--color-);
-  }
+html {
+  background-color: var(--color-);
+  font-family: var(--font-montserrat);
+}
 
-  a {
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+}
 
-  img {
-    display: block;
-    max-width: 100%;
-  }
+img {
+  display: block;
+  max-width: 100%;
+}
 
-  button {
-    background: none;
-    letter-spacing: -0.03em;
-  }
+button {
+  background: none;
+  letter-spacing: -0.03em;
+}
 
-  input {
-    letter-spacing: -0.03em;
-  }
+input {
+  letter-spacing: -0.03em;
+}
 
- /* START of Typography */
+/* START of Typography */
 
- .h1 {
+.h1 {
   font-size: 84px;
   font-weight: 900;
   line-height: 84px;
@@ -91,12 +92,14 @@
   line-height: 36px;
   font-family: var(--font-montserrat);
   letter-spacing: 0.05em;
+  color:var(--color-lg4)
 }
 
 .body-2 {
   font-size: 18px;
   font-weight: 600;
   line-height: 32px;
+  font-family: var(--font-montserrat);
 }
 
 .body-3 {
@@ -148,25 +151,23 @@
 
 /* END of Typography */
 
- /* START of Gradients */
+/* START of Gradients */
 
- .g1 {
-  background: linear-gradient(90deg, #8ea1e1, #7289da, #5865F2,);
+.g1 {
+  background: linear-gradient(90deg, #8ea1e1, #7289da, #5865f2);
 }
- .g2 {
-  background: linear-gradient(#23272a, #7E61FF 100%, #6668EB 0%);
+.g2 {
+  background: linear-gradient(#23272a, #7e61ff 100%, #6668eb 0%);
 }
-.g3{
-  background: linear-gradient(#CD83CB, #B674F1);
+.g3 {
+  background: linear-gradient(#cd83cb, #b674f1);
 }
-.g4{
-  background: linear-gradient(#4E1BF5, #5E4EEE);
+.g4 {
+  background: linear-gradient(#4e1bf5, #5e4eee);
 }
 
-@layer components {
-  .container {
-    @apply mx-auto max-w-[1252px] px-16 max-xl:px-10 max-lg:px-6 max-sm:px-4;
-  }
+.container {
+  @apply mx-auto max-w-[1252px] px-16 max-xl:px-10 max-lg:px-6 max-sm:px-4;
 }
 
 :root {
@@ -264,4 +265,3 @@
     @apply bg-background text-foreground;
   }
 }
-
