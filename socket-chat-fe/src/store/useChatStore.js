@@ -12,7 +12,7 @@ export const useChatStore = create((set) => ({
   getUsers: async () => {
     set({ isUsersLoading: true });
     try {
-      const res = await instance.get("/messages/users", data);
+      const res = await instance.get("/messages/users");
       set({ users: res.data });
     } catch (error) {
       toast.error(error.response.data.message);

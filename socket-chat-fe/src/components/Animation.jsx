@@ -27,17 +27,13 @@ export const AnimatedBG2 = () => {
 
 export const ChatSkeleton = () => {
   return (
-    <div className="space-y-4">
-      {/* Single chat message skeleton */}
+    <div className="space-y-4 w-20 lg:w-72">
+     
       {[...Array(5)].map((_, index) => (
-        <div key={index} className="flex gap-3 items-start">
-          {/* Avatar Skeleton */}
+        <div key={index} className="flex gap-3 items-start w-[100%]">         
           <Skeleton className="h-10 w-10 rounded-full" />
-          
           <div className="space-y-2">
-            {/* Name Skeleton */}
             <Skeleton className="h-4 w-32" />
-            {/* Message Skeleton */}
             <Skeleton className="h-6 w-60" />
           </div>
         </div>

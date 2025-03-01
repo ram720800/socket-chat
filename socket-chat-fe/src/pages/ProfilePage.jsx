@@ -9,21 +9,12 @@ import { useAuthStore } from "../store/useAuthStore.js";
 import { useEffect, useState } from "react";
 import { Camera } from "lucide-react";
 import { Loader } from "lucide-react";
+import { useAvatar } from "@/components/avatar.jsx";
 
 export const ProfilePage = () => {
   const { authUser, updating, isUpdating } = useAuthStore();
-  const [avatar, setAvatar] = useState("");
+  const avatar = useAvatar();
   const [selectedImg, setSelectedImg] = useState(null);
-
-  const getRandomAvatar = () => {
-    return `https://api.dicebear.com/8.x/lorelei/svg?seed=${Math.random()}&format=png`;
-  };
-
-  useEffect(() => {
-    if (!authUser.profilePic) {
-      setAvatar(getRandomAvatar());
-    }
-  }, []);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -87,13 +78,13 @@ export const ProfilePage = () => {
           </p>
           <div className="space-y-4">
             <div className="flex flex-row items-center rounded-sm bg-[var(--color-bl1)] w-auto p-2 mx-auto">
-              <div>
+              <div className="relative">
                 <img
                   src={selectedImg || authUser.profilePic || avatar}
                   alt="user Avatar"
                   className="size-8 rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
                 />
-                <span className=" absolute size-4 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]  translate-x-[1.2rem] -translate-y-[0.7rem]" />
+                <span className=" absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)] translate-y-[0.4rem] translate-x-[0.2rem]" />
               </div>
 
               <div className="flex flex-col ml-4 items-start">

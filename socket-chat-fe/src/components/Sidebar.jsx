@@ -1,13 +1,14 @@
 import { useChatStore } from "@/store/useChatStore";
 import { ChatSkeleton } from "@/components/Animation";
 import { useEffect } from "react";
-import { User } from "lucide-react";
+import { useAuthStore } from "@/store/useAuthStore";
+import { useAvatar } from "@/components/avatar.jsx";
 
 const Sidebar = () => {
   const { users, selectedUser, isUsersLoading, getUsers, setSelectedUser } =
     useChatStore();
-
-  const onlineUsers = [];
+  const { onlineUsers, authUser } = useAuthStore();
+  const avatar = useAvatar();
 
   useEffect(() => {
     getUsers();
@@ -16,24 +17,63 @@ const Sidebar = () => {
   if (isUsersLoading) return <ChatSkeleton />;
 
   return (
-    <aside className="flex flex-col h-full w-20 lg:w-72 transition-all duration-500 border-r rounded-tl-lg mt-4 bg-[var(--color-bl2)]">
+    <aside className="flex flex-col h-full w-20 lg:w-72 transition-all duration-500 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)]">
       <div className="border-b-2 border-[var(--color-bl1)] w-full p-2">
         <span className="uppercase font-bold text-xs text-[var(--color-lg4)] mx-4">
           direct messages
         </span>
-        <div className="flex justify-centre items-start gap-x-2 mx-2 my-4">
-            <img
-              src="/images/sc_friends.svg"
-              alt="friends"
-              className="size-6"
-            />
-            <div className="font-medium hidden lg:block text-[var(--color-lg4)] mx-2">
-              Friends
+        <div className="flex justify-centre items-start gap-x-2 mx-1 my-4 py-2 pl-1.5 bg-[var(--color-bl3)] rounded-sm">
+          <img src="/images/sc_friends.svg" alt="friends" className="size-6" />
+          <div className="font-medium hidden lg:block text-[var(--color-lg4)] mx-2">
+            Friends
           </div>
         </div>
       </div>
 
       <div className="overflow-y-auto w-full py-3">
+        {users.map((user) => (
+          <button
+            key={user._id}
+            onClick={() => setSelectedUser(user)}
+            className={`p-3 flex items-center gap-2 transition-colors 
+              ${selectedUser?._id === user._id ? "bg-[var(--color-lg4)]" : ""}`}
+          >
+            <div className="relative mx-auto lg:mx-0">
+              <img
+                src={user.profilePic}
+                alt={user.fullName}
+                className="size-12 rounded-full object-cover"
+              />
+              {onlineUsers.includes(user._id) ? (
+                <span className="absolute size-4 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]"></span>
+              ) : (
+                <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-lg4)] rounded-full border-4 border-[var(--color-bl2)]"></span>
+              )}
+            </div>
+            <div className="text-left min-w-0 ml-2">
+              <div className="font-medium text-lg text-[var(--color-lg4)]">
+                {user.fullName}
+              </div>
+            </div>
+          </button>
+        ))}
+      </div>
+      <div className="w-20 lg:w-72 transition-all duration-500 bottom-0 fixed p-2 bg-[var(--color-dg3)] my-2">
+        <div className="flex justify-start items-center">
+          <div className="relative">
+            <img
+              src={authUser.profilePic || avatar}
+              alt="user Avatar"
+              className="size-12 rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
+            />
+            <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]" />
+          </div>
+          <div>
+            <span className="text-[var(--color-wl2)] text-md font-medium mx-3">
+              {authUser?.fullName}
+            </span>
+          </div>
+        </div>
       </div>
     </aside>
   );
