@@ -5,16 +5,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useAuthStore } from "../store/useAuthStore.js";
-import { useEffect, useState } from "react";
 import { Camera } from "lucide-react";
 import { Loader } from "lucide-react";
 import { useAvatar } from "@/components/avatar.jsx";
 
 export const ProfilePage = () => {
-  const { authUser, updating, isUpdating } = useAuthStore();
+  const { authUser, updating, isUpdating, selectedImg, setSelectedImg, logOut } =
+    useAuthStore();
   const avatar = useAvatar();
-  const [selectedImg, setSelectedImg] = useState(null);
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -112,7 +112,14 @@ export const ProfilePage = () => {
               </p>
             </div>
           </div>
+          
         </CardFooter>
+        <div className="ml-22 mb-6">
+          <span className="text-xs text-[var(--color-wl1)] font-medium uppercase">Account removal</span>
+          <div>
+            <Button onClick={logOut} varient="default" className="w-26 h-7 text-xs font-medium !bg-[var(--color-bl1)] hover:!bg-[var(--color-r3)] !border-[var(--color-r3)] border-[1px]">Disable Account</Button>
+          </div>
+          </div>
       </Card>
     </div>
   );

@@ -7,7 +7,7 @@ import { useAvatar } from "@/components/avatar.jsx";
 const Sidebar = () => {
   const { users, selectedUser, isUsersLoading, getUsers, setSelectedUser } =
     useChatStore();
-  const { onlineUsers, authUser } = useAuthStore();
+  const { onlineUsers, authUser, selectedImg } = useAuthStore();
   const avatar = useAvatar();
 
   useEffect(() => {
@@ -40,9 +40,9 @@ const Sidebar = () => {
           >
             <div className="relative mx-auto lg:mx-0">
               <img
-                src={user.profilePic}
+                src={user.profilePic || "/sc_mini.svg"}
                 alt={user.fullName}
-                className="size-12 rounded-full object-cover"
+                className="size-10 rounded-full object-cover"
               />
               {onlineUsers.includes(user._id) ? (
                 <span className="absolute size-4 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]"></span>
@@ -51,7 +51,7 @@ const Sidebar = () => {
               )}
             </div>
             <div className="text-left min-w-0 ml-2">
-              <div className="font-medium text-lg text-[var(--color-lg4)]">
+              <div className="font-medium text-md text-[var(--color-lg4)]">
                 {user.fullName}
               </div>
             </div>
@@ -62,16 +62,17 @@ const Sidebar = () => {
         <div className="flex justify-start items-center">
           <div className="relative">
             <img
-              src={authUser.profilePic || avatar}
+              src={selectedImg || authUser.profilePic || avatar}
               alt="user Avatar"
               className="size-12 rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
             />
             <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]" />
           </div>
-          <div>
+          <div className="flex flex-col justify-center leading-none mt-2 ">
             <span className="text-[var(--color-wl2)] text-md font-medium mx-3">
               {authUser?.fullName}
             </span>
+            <span className="text-sm text-[var(--color-wl3)] mx-3">Online</span>
           </div>
         </div>
       </div>

@@ -1,17 +1,18 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { User, LogOut } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore.js";
 
 export const Navbar = () => {
-  const { authUser, logOut } = useAuthStore();
+  const { authUser } = useAuthStore();
 
   const location = useLocation();
 
   const hideLogo = location.pathname === "/chat";
 
+  const escape = location.pathname === "/profile";
+
   const userPosition =
-    location.pathname === "/chat" ? "absolute top-5 right-10 " : "relative";
+    location.pathname === "/chat" ? "absolute top-135 right-235" : "relative";
 
   return (
     <header className="fixed top-0 left-0 w-full py-10 z-50 max-lg:py-4">
@@ -28,19 +29,30 @@ export const Navbar = () => {
             </Link>
           )}
         </div>
-        <div className={`flex items-center gap-4 ${userPosition}`}>
-          {authUser && (
-            <>
-              <Link to="/profile">
-                <User className="size-5 text-[var(--color-wl1)]" />
-                <span className="sm-inline hidden">Profile</span>
-              </Link>
-              <button onClick={logOut}>
-                <LogOut className="size-5 text-[var(--color-wl1)]" />
-                <span className="sm-inline hidden">Logout</span>
-              </button>
-            </>
-          )}
+        <div>
+          <div className={`${userPosition}`}>
+            {authUser && (
+              <>
+                {!escape ? (
+                  <Link to="/profile">
+                    <img
+                      src="/images/gear.svg"
+                      alt="gear"
+                      className="size-5"
+                    />
+                  </Link>
+                ) : (
+                  <Link to="/chat">
+                    <img
+                      src="/images/cross.svg"
+                      alt="gear"
+                      className="size-5"
+                    />
+                  </Link>
+                )}
+              </>
+            )}
+          </div>
         </div>
       </div>
     </header>

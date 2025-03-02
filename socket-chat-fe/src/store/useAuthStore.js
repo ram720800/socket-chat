@@ -8,7 +8,10 @@ export const useAuthStore = create((set) => ({
   isSigningIn: false,
   isUpdating: false,
   isMeAuth: true,
-  onlineUsers:[],
+  onlineUsers: [],
+  selectedImg: null,
+
+  setSelectedImg: (img) => set({ selectedImg: img }),
 
   me: async () => {
     try {
@@ -36,7 +39,9 @@ export const useAuthStore = create((set) => ({
   signIn: async (data) => {
     set({ isSigningIn: true });
     try {
-      const res = await instance.post("/auth/signin", data, {withCredentials: true});
+      const res = await instance.post("/auth/signin", data, {
+        withCredentials: true,
+      });
       set({ authUser: res.data });
       toast.success("Logged in successfully");
     } catch (error) {
@@ -61,7 +66,7 @@ export const useAuthStore = create((set) => ({
       set({ authUser: res.data });
       toast.success("Profile updated successfully");
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
       toast.error(error.response.data.message);
     } finally {
       set({ isUpdating: false });
