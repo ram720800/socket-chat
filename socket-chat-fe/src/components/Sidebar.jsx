@@ -17,12 +17,12 @@ const Sidebar = () => {
   if (isUsersLoading) return <ChatSkeleton />;
 
   return (
-    <aside className="flex flex-col h-full w-20 lg:w-72 transition-all duration-500 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)]">
+    <aside className="flex flex-col h-full w-20 lg:w-64 transition-all duration-500 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)]">
       <div className="border-b-2 border-[var(--color-bl1)] w-full p-2">
         <span className="uppercase font-bold text-xs text-[var(--color-lg4)] mx-4">
           direct messages
         </span>
-        <div className="flex justify-centre items-start gap-x-2 mx-1 my-4 py-2 pl-1.5 bg-[var(--color-bl3)] rounded-sm">
+        <div className="flex items-start gap-x-2 mx-1 my-4 py-2 pl-1.5 bg-[var(--color-bl3)] rounded-sm transition-colors duration-300" >
           <img src="/images/sc_friends.svg" alt="friends" className="size-6" />
           <div className="font-medium hidden lg:block text-[var(--color-lg4)] mx-2">
             Friends
@@ -58,7 +58,7 @@ const Sidebar = () => {
           </button>
         ))}
       </div>
-      <div className="w-20 lg:w-72 transition-all duration-500 bottom-0 fixed p-2 bg-[var(--color-dg3)] my-2">
+      <div className="w-20 lg:w-64 transition-all duration-500 bottom-0 fixed p-2 bg-[var(--color-dg3)] my-2">
         <div className="flex justify-start items-center">
           <div className="relative">
             <img

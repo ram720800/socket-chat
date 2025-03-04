@@ -3,6 +3,8 @@ import Socket from "../components/Socket.jsx";
 import Sidebar from "../components/Sidebar.jsx";
 import ChatContainer from "../components/ChatContainer.jsx";
 import NoChatSelected from "../components/NoChatSelected.jsx";
+import Active from "@/components/Active.jsx";
+import NoActive from "@/components/NoActive.jsx";
 
 export const ChatingPage = () => {
   const { selectedUser } = useChatStore();
@@ -13,6 +15,7 @@ export const ChatingPage = () => {
         <Socket />
         <Sidebar />
         {!selectedUser ? <NoChatSelected /> : <ChatContainer />}
+        {!selectedUser ? <NoActive /> : <Active />}       
       </div>
    
 

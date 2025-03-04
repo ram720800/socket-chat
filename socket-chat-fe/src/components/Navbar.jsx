@@ -12,7 +12,7 @@ export const Navbar = () => {
   const escape = location.pathname === "/profile";
 
   const userPosition =
-    location.pathname === "/chat" ? "absolute top-135 right-235" : "relative";
+    location.pathname === "/chat" ? "absolute top-135 right-240" : "relative";
 
   return (
     <header className="fixed top-0 left-0 w-full py-10 z-50 max-lg:py-4">
