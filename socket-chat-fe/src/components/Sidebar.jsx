@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { useChatStore } from "@/store/useChatStore";
 import { ChatSkeleton } from "@/components/Animation";
 import { useEffect } from "react";
@@ -22,21 +23,24 @@ const Sidebar = () => {
         <span className="uppercase font-bold text-xs text-[var(--color-lg4)] mx-4">
           direct messages
         </span>
-        <div className="flex items-start gap-x-2 mx-1 my-4 py-2 pl-1.5 bg-[var(--color-bl3)] rounded-sm transition-colors duration-300" >
+        <Button
+          varient="default"
+          className="w-full my-4 p-5 flex justify-start items-center"
+        >
           <img src="/images/sc_friends.svg" alt="friends" className="size-6" />
-          <div className="font-medium hidden lg:block text-[var(--color-lg4)] mx-2">
+          <div className="font-medium hidden lg:block text-[var(--color-lg4)] mx-2 text-md">
             Friends
           </div>
-        </div>
+        </Button>
       </div>
 
-      <div className="overflow-y-auto w-full py-3">
+      <div className="overflow-y-auto w-full py-3">     
         {users.map((user) => (
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
-            className={`p-3 flex items-center gap-2 transition-colors 
-              ${selectedUser?._id === user._id ? "bg-[var(--color-lg4)]" : ""}`}
+            className={`p-3 flex items-center gap-2 transition-colors w-full 
+              ${selectedUser?._id === user._id ? "bg-[var(--color-bl3)]" : ""}`}
           >
             <div className="relative mx-auto lg:mx-0">
               <img
@@ -45,7 +49,7 @@ const Sidebar = () => {
                 className="size-10 rounded-full object-cover"
               />
               {onlineUsers.includes(user._id) ? (
-                <span className="absolute size-4 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]"></span>
+                <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]"></span>
               ) : (
                 <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-lg4)] rounded-full border-4 border-[var(--color-bl2)]"></span>
               )}

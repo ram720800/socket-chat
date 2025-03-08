@@ -4,11 +4,11 @@ const NoChatSelected = () => {
       <div className="absolute top-0 size-10 bg-[var(--color-bl2)] w-full">
       <div className="flex justify-centre items-start gap-x-2 mx-1 py-2">
           <img src="/images/sc_friends.svg" alt="friends" className="size-6" />
-          <div className="font-medium hidden lg:block text-[var(--color-wl1)] mx-2">
+          <div className="font-medium text-[var(--color-wl1)] mx-2">
             Friends
           </div>
-          <div className="mx-4 ">
-            <span className="text-[var(--color-wl1)] bg-[var(--color-g2)] rounded-sm p-0.5">Create room</span>
+          <div className="hover:bg-[var(--color-dg3)] rounded-sm ">
+            <div className="text-[var(--color-wl1)] font-medium mx-2">Online</div>
           </div>
         </div>
       </div>

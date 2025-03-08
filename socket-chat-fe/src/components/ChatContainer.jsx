@@ -1,9 +1,34 @@
-const ChatContainer = () => {
-  return (
-    <div className="w-full flex flex-1 mt-4 bg-[var(--color-bl3)] text-[var(--color-wl1)] relative">
-      <div className="absolute top-0 size-10 bg-[var(--color-bl2)] w-full"></div>
-    </div>
-  )
-}
+import { useChatStore } from "@/store/useChatStore";
+import ChatHeader from "./ChatHeader";
+import MessageInput from "./MessageInput";
+import { MessageSkeleton } from "./Animation";
+import { useEffect } from "react";
 
-export default ChatContainer
+const ChatContainer = () => {
+  const { messages, getMessages, isMessagesLoading, selectedUser } =
+    useChatStore();
+
+  useEffect(() => {
+    getMessages(selectedUser._id);
+  }, [selectedUser._id, getMessages]);
+
+  if (isMessagesLoading) {
+    return (
+      <div className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] text-[var(--color-wl1)] relative">
+        <ChatHeader />
+        <MessageSkeleton />
+        <MessageInput />
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] text-[var(--color-wl1)] relative">
+      <ChatHeader />
+      <p>message...</p>
+      <MessageInput />
+    </div>
+  );
+};
+
+export default ChatContainer;

@@ -52,9 +52,7 @@ export const ProfilePage = () => {
             />
             <label
               htmlFor="avatar-upload"
-              className={`absolute bottom-0 right-0 hover:scale-105 p-2 rounded-full cursor-pointer transition-all duration-500 ${
-                isUpdating ? "animate-pulse pointer-events-none" : ""
-              }`}
+              className={`absolute bottom-0 right-0 hover:scale-105 p-2 rounded-full cursor-pointer transition-all duration-500`}
             >
               <Camera className="size-5 text-[var(--color-wl1)] rounded-full" />
               <input
@@ -117,7 +115,7 @@ export const ProfilePage = () => {
         <div className="ml-22 mb-6">
           <span className="text-xs text-[var(--color-wl1)] font-medium uppercase">Account removal</span>
           <div>
-            <Button onClick={logOut} varient="default" className="w-26 h-7 text-xs font-medium !bg-[var(--color-bl1)] hover:!bg-[var(--color-r3)] !border-[var(--color-r3)] border-[1px]">Disable Account</Button>
+            <Button onClick={logOut} className="text-wl1 w-26 h-7 text-xs font-medium !bg-[var(--color-bl1)] hover:!bg-[var(--color-r3)] !border-[var(--color-r3)] border-[1px]">Disable Account</Button>
           </div>
           </div>
       </Card>
