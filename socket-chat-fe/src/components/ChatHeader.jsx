@@ -24,7 +24,11 @@ const ChatHeader = () => {
             <h5 className="font-medium">{selectedUser.fullName}</h5>
           </div>
         </div>
-       {/*  <button onClick={() => setSelectedUser(null)} className="mx-4">
+       {/*  <button
+          type="button"
+          onClick={() => setSelectedUser(null)}
+          className="mx-4 z-100 p-1 bg-dg3 rounded-md cursor-pointer"
+        >
           <img src="/images/cross.svg" alt="cross" className="size-3" />
         </button> */}
       </div>

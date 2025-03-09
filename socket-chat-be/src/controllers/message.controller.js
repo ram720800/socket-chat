@@ -21,7 +21,7 @@ export const getMessages = async (req, res) => {
     const { id: opponentId } = req.params;
     const signedInUser = req.user._id;
 
-    const messages = await UserModel.find({
+    const messages = await MessageModel.find({
       $or: [
         { senderId: signedInUser, reciverId: opponentId },
         { senderId: opponentId, reciverId: signedInUser },

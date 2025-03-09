@@ -159,3 +159,8 @@ input {
   @apply mx-auto max-w-[1252px] px-16 max-xl:px-10 max-lg:px-6 max-sm:px-4;
 }
 
+.disabled\:opacity-50:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+

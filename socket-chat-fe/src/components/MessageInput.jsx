@@ -3,14 +3,14 @@ import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 const MessageInput = () => {
-  const { sendMessage } = useChatStore();
+  const { sendMessage, selectedUser } = useChatStore();
   const [text, setText] = useState("");
   const [preview, setPreview] = useState(null);
   const fileInputRef = useRef(null);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (!file.type.startsWith("/image")) {
+    if (!file.type.startsWith("image/")) {
       toast.error("please select an image");
       return;
     }
@@ -50,12 +50,12 @@ const MessageInput = () => {
             <img
               src={preview}
               alt="preview"
-              className="size-20 object-cover rounded-md border border-bl2"
+              className="size-20 object-cover object-center rounded-md border border-bl2 bg-bl1"
             />
             <button
+              type="button"
               onClick={removeImage}
-              className="absolute -top-1.5 -right-1.5 size-4 rounded-full bg-bl1"
-              type="buttton"
+              className="absolute -top-1.5 -right-1.5 z-50 p-1 bg-bl2 hover:bg-bl3 rounded-md cursor-pointer"            
             >
               <img src="/images/cross.svg" alt="cross" className="size-3" />
             </button>
@@ -68,10 +68,10 @@ const MessageInput = () => {
           <input
             type="text"
             name="text"
-            placeholder={`Message@`}
+            placeholder={`Message @${selectedUser?.fullName}`}
             value={text}
             onChange={(e) => setText(e.target.value)}
-            className="border-none outline-none focus:ring-0 bg-[var(--color-bl2)] shadow-2xl px-6 py-3 rounded-lg text-lg font-medium w-full"
+            className="border-none outline-none focus:ring-0 z-50 bg-[var(--color-bl2)] shadow-2xl px-6 py-3 rounded-lg text-lg font-medium w-full"
           />
           <input
             type="file"
@@ -83,14 +83,14 @@ const MessageInput = () => {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="absolute right-14 top-1/2 -translate-y-1/2 z-10 p-1 hover:bg-dg3 rounded-md cursor-pointer"
+            className="absolute right-14 top-1/2 -translate-y-1/2 z-50 p-1 hover:bg-dg3 rounded-md cursor-pointer"
           >
             <img src="/images/image.svg" alt="img" className="size-6" />
           </button>
           <button
             type="submit"
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-10 p-1 hover:bg-dg3 rounded-md cursor-pointer"
-            disabled={!text.trim() && !preview}
+            disabled={!(Boolean(text.trim()) || Boolean(preview))}
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-50 p-1 hover:bg-dg3 rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"    
           >
             <img src="/images/send.svg" alt="send" className="size-6" />
           </button>
