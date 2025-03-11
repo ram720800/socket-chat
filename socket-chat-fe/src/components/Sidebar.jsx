@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { useChatStore } from "@/store/useChatStore";
 import { ChatSkeleton } from "@/components/Animation";
 import { useEffect } from "react";
@@ -18,29 +17,29 @@ const Sidebar = () => {
   if (isUsersLoading) return <ChatSkeleton />;
 
   return (
-    <aside className="flex flex-col h-full w-20 lg:w-64 transition-all duration-500 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)]">
-      <div className="border-b-2 border-[var(--color-bl1)] w-full p-2">
-        <span className="uppercase font-bold text-xs text-[var(--color-lg4)] mx-4">
+    <aside className="flex flex-col h-full w-20 lg:w-64 transition-all duration-500 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)] ">
+      <div className="w-full p-2 h-28 border-b-2 border-[var(--color-bl1)]">
+        <p className="uppercase font-bold text-xs text-[var(--color-lg4)] mx-4">
           direct messages
-        </span>
-        <Button
-          varient="default"
-          className="w-full my-4 p-5 flex justify-start items-center"
-        >
-          <img src="/images/sc_friends.svg" alt="friends" className="size-6" />
-          <div className="font-medium hidden lg:block text-[var(--color-lg4)] mx-2 text-md">
-            Friends
-          </div>
-        </Button>
+        </p>
+        <div className="relative top-5 z-50">
+          <button
+            className="w-full h-auto py-3 pl-2 bg-dg3 hover:bg-bl3 rounded-md cursor-pointer flex items-center justify-start gap-2"
+            onClick={() => setSelectedUser(null)}
+          >
+            <img src="/images/sc_friends.svg" alt="friend" className="size-6" />
+            <p className="text-wl3 font-medium text-md">Friends</p>
+          </button>
+        </div>
       </div>
 
-      <div className="overflow-y-auto w-full py-3">     
+      <div className="overflow-y-auto w-full py-3">
         {users.map((user) => (
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
-            className={`p-3 flex items-center gap-2 transition-colors w-full 
-              ${selectedUser?._id === user._id ? "bg-[var(--color-bl3)]" : ""}`}
+            className={`p-3 flex items-center gap-2 transition-colors w-full rounded-lg hover:bg-bl3 my-1
+              ${selectedUser?._id === user._id ? "bg-[var(--color-dg3)]" : ""}`}
           >
             <div className="relative mx-auto lg:mx-0">
               <img

@@ -8,17 +8,23 @@ const MessageInput = () => {
   const [preview, setPreview] = useState(null);
   const fileInputRef = useRef(null);
 
-  const handleImageChange = (e) => {
+  const convertImageToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (!file.type.startsWith("image/")) {
       toast.error("please select an image");
       return;
     }
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setPreview(reader.result);
-    };
-    reader.readAsDataURL(file);
+    const base64 = await convertImageToBase64(file);
+    setPreview(base64);
   };
 
   const removeImage = () => {
@@ -32,13 +38,13 @@ const MessageInput = () => {
     try {
       await sendMessage({
         text: text.trim(),
-        preview: preview,
+        image: preview,
       });
       setText("");
       setPreview(null);
-      if (fileInputRef.current) return (fileInputRef.current.value = "");
+      if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error) {
-      toast.error("message failed");
+      console.error("message failed",error);
     }
   };
 
@@ -55,7 +61,7 @@ const MessageInput = () => {
             <button
               type="button"
               onClick={removeImage}
-              className="absolute -top-1.5 -right-1.5 z-50 p-1 bg-bl2 hover:bg-bl3 rounded-md cursor-pointer"            
+              className="absolute -top-1.5 -right-1.5 z-50 p-1 bg-bl2 hover:bg-bl3 rounded-md cursor-pointer"
             >
               <img src="/images/cross.svg" alt="cross" className="size-3" />
             </button>
@@ -90,7 +96,7 @@ const MessageInput = () => {
           <button
             type="submit"
             disabled={!(Boolean(text.trim()) || Boolean(preview))}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-50 p-1 hover:bg-dg3 rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"    
+            className="absolute right-3 top-1/2 -translate-y-1/2 z-50 p-1 hover:bg-dg3 rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <img src="/images/send.svg" alt="send" className="size-6" />
           </button>

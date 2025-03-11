@@ -19,15 +19,18 @@ export const getUsersForSidebar = async (req, res) => {
 export const getMessages = async (req, res) => {
   try {
     const { id: opponentId } = req.params;
-    const signedInUser = req.user._id;
+    const signedInUser = req.user?._id;
+
+    if (!signedInUser || !opponentId) {
+      return res.status(400).json({ message: "Invalid user data" });
+    }
 
     const messages = await MessageModel.find({
       $or: [
-        { senderId: signedInUser, reciverId: opponentId },
-        { senderId: opponentId, reciverId: signedInUser },
+        { senderId: signedInUser, receiverId: opponentId },
+        { senderId: opponentId, receiverId: signedInUser },
       ],
-    });
-
+    }).sort({ createdAt: 1 });
     return res.status(200).json(messages);
   } catch (error) {
     console.log(`Error: ${error.message}`);
@@ -38,19 +41,23 @@ export const getMessages = async (req, res) => {
 export const sendMessage = async (req, res) => {
   try {
     const { text, image } = req.body;
-    const { id: reciverId } = req.params;
+    const { id: receiverId } = req.params;
     const senderId = req.user._id;
 
     let imageURL;
     if (image) {
-      const uploaderRes = cloudinary.uploader.upload(image);
-      imageURL = (await uploaderRes).secure_url;
+      try {
+        const uploaderRes = await cloudinary.uploader.upload(image);
+        imageURL = uploaderRes.secure_url;
+      } catch (uploadError) {
+        return res.status(500).json({ message: "Image upload failed" });
+      }
     }
     const newMessage = new MessageModel({
       senderId,
-      reciverId,
+      receiverId,
       text,
-      image: imageURL,
+      image: imageURL || null,
     });
       await newMessage.save();
 

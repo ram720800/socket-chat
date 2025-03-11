@@ -4,7 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-
 @theme {
   --font-montserrat: "Montserrat", serif;
   --color-b1: #5865f2;
@@ -13,7 +12,7 @@
   --color-lg4: #99aab5;
   --color-w5: #ffffff;
   --color-g1: #57f287;
-  --color-g2: #3BA55C;
+  --color-g2: #3ba55c;
   --color-y2: #fee75c;
   --color-r3: #ed4245;
   --color-bl1: #202225;
@@ -81,7 +80,7 @@ input {
   line-height: 36px;
   font-family: var(--font-montserrat);
   letter-spacing: 0.05em;
-  color:var(--color-lg4)
+  color: var(--color-lg4);
 }
 
 .body-2 {
@@ -164,3 +163,14 @@ input {
   cursor: not-allowed;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bl2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bl1);
+  border-radius: 4px;
+}

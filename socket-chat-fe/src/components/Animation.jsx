@@ -42,10 +42,10 @@ export const MessageSkeleton = () => {
     <div className="space-y-12 w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)]">
       {[...Array(3)].map((_, index) => (
         <div key={index} className="flex gap-3 items-start mx-1">
-          <Skeleton className="h-12 w-12 rounded-full bg-wl1" />
+          <Skeleton className="h-12 w-12 rounded-full bg-bl2" />
           <div className="space-y-2">
-            <Skeleton className="h-6 w-32 bg-wl1" />
-            <Skeleton className="h-20 w-64 bg-wl1" />
+            <Skeleton className="h-6 w-32 bg-bl2" />
+            <Skeleton className="h-20 w-64 bg-bl2" />
           </div>
         </div>
       ))}
