@@ -6,7 +6,7 @@ const Active = () => {
   const { onlineUsers } = useAuthStore();
 
   return (
-    <div className="w-72 bg-[var(--color-bl1)] border-l-2 border-[var(--color-bl1)] mt-4 text-[var(--color-lg4)]">
+    <div className="w-72 max-xl:hidden bg-[var(--color-bl1)] border-l-2 border-[var(--color-bl1)] mt-4 text-[var(--color-lg4)]">
       <div className="h-28 bg-r3 relative">
         <div className="absolute top-16 left-2">
           <img

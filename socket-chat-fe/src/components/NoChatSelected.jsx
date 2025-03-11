@@ -1,7 +1,7 @@
 const NoChatSelected = () => {
   return (
-    <div className="w-full flex flex-1 flex-col justify-center items-center p-40 mt-4 bg-[var(--color-bl3)] relative">
-      <div className="absolute top-0 size-12 bg-[var(--color-bl2)] w-full">
+    <div className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] relative">
+      <div className="w-full absolute top-0 size-12 bg-[var(--color-bl2)]">
         <div className="flex justify-start items-center gap-x-2 mx-1 py-2">
           <img src="/images/sc_friends.svg" alt="friends" className="size-6" />
           <div className="font-medium text-[var(--color-wl1)] mx-2">
@@ -13,10 +13,10 @@ const NoChatSelected = () => {
           </div>
         </div>
       </div>
-      <div className="w-96">
+      <div className="w-96 flex flex-col items-center mx-auto mt-20">
         <img src="/images/nochat_sc1.png" alt="noChat" className="w-[100%]" />
       </div>
-      <p className="body-1 ">There are no friends online at this time.</p>
+      <p className="body-1 mx-auto">There are no friends online at this time.</p>
     </div>
   );
 };

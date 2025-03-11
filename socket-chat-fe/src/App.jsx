@@ -12,7 +12,9 @@ import { Loader } from "lucide-react";
 import { Toaster } from 'react-hot-toast';
 
 function App() {
-  const { authUser, me, isMeAuth } = useAuthStore();
+  const { authUser, me, isMeAuth, onlineUsers } = useAuthStore();
+
+  console.log(onlineUsers);
 
   useEffect(() => {
     me();

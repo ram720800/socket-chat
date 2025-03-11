@@ -9,11 +9,6 @@ export const Navbar = () => {
 
   const hideLogo = location.pathname === "/chat";
 
-  const escape = location.pathname === "/profile";
-
-  const userPosition =
-    location.pathname === "/chat" ? "absolute top-135 right-248" : "relative";
-
   return (
     <header className="fixed top-0 left-0 w-full py-10 z-50 max-lg:py-4">
       <div className="container flex justify-between items-center h-14">
@@ -28,31 +23,6 @@ export const Navbar = () => {
               />
             </Link>
           )}
-        </div>
-        <div>
-          <div className={`${userPosition}`}>
-            {authUser && (
-              <>
-                {!escape ? (
-                  <Link to="/profile">
-                    <img
-                      src="/images/gear.svg"
-                      alt="gear"
-                      className="size-5"
-                    />
-                  </Link>
-                ) : (
-                  <Link to="/chat">
-                    <img
-                      src="/images/cross.svg"
-                      alt="gear"
-                      className="size-5"
-                    />
-                  </Link>
-                )}
-              </>
-            )}
-          </div>
         </div>
       </div>
     </header>

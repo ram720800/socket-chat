@@ -10,10 +10,17 @@ import { useAuthStore } from "../store/useAuthStore.js";
 import { Camera } from "lucide-react";
 import { Loader } from "lucide-react";
 import { useAvatar } from "@/components/avatar.jsx";
+import { Link } from "react-router-dom";
 
 export const ProfilePage = () => {
-  const { authUser, updating, isUpdating, selectedImg, setSelectedImg, logOut } =
-    useAuthStore();
+  const {
+    authUser,
+    updating,
+    isUpdating,
+    selectedImg,
+    setSelectedImg,
+    logOut,
+  } = useAuthStore();
   const avatar = useAvatar();
 
   const handleImageUpload = async (e) => {
@@ -33,7 +40,13 @@ export const ProfilePage = () => {
 
   return (
     <div className="flex justify-center items-center w-full min-h-screen g2">
-      <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute ]"></div>
+      <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute ]">
+      </div>
+      <div className="absolute z-50 top-14 right-96">
+      <Link to="/chat">
+          <img src="/images/cross.svg" alt="cross" className="size-5" />
+        </Link>
+      </div>
       <Card className="w-[360px] z-20 bg-[var(--color-bl2)] border-none mt-4 fixed max-lg:mt-10 max-lg:w-[300px]">
         <CardHeader>
           <CardTitle className="text-center font-bold  text-[var(--color-wl2)] text-2xl">
@@ -110,14 +123,20 @@ export const ProfilePage = () => {
               </p>
             </div>
           </div>
-          
         </CardFooter>
         <div className="ml-22 mb-6">
-          <span className="text-xs text-[var(--color-wl1)] font-medium uppercase">Account removal</span>
+          <span className="text-xs text-[var(--color-wl1)] font-medium uppercase">
+            Account removal
+          </span>
           <div>
-            <Button onClick={logOut} className="text-wl1 w-26 h-7 text-xs font-medium !bg-[var(--color-bl1)] hover:!bg-[var(--color-r3)] !border-[var(--color-r3)] border-[1px]">Disable Account</Button>
+            <Button
+              onClick={logOut}
+              className="text-wl1 w-26 h-7 text-xs font-medium !bg-[var(--color-bl1)] hover:!bg-[var(--color-r3)] !border-[var(--color-r3)] border-[1px]"
+            >
+              Disable Account
+            </Button>
           </div>
-          </div>
+        </div>
       </Card>
     </div>
   );

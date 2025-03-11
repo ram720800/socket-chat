@@ -2,10 +2,10 @@ import { useAuthStore } from "@/store/useAuthStore";
 import { useChatStore } from "@/store/useChatStore";
 
 const ChatHeader = () => {
-  const { selectedUser, setSelectedUser } = useChatStore();
+  const { selectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
   return (
-    <div className="size-12 bg-[var(--color-bl3)] drop-shadow-2xl w-full">
+    <div className="w-full size-12 bg-[var(--color-bl3)] drop-shadow-2xl">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <div className="relative p-2">
@@ -24,13 +24,6 @@ const ChatHeader = () => {
             <h5 className="font-medium">{selectedUser.fullName}</h5>
           </div>
         </div>
-       {/*  <button
-          type="button"
-          onClick={() => setSelectedUser(null)}
-          className="mx-4 z-100 p-1 bg-dg3 rounded-md cursor-pointer"
-        >
-          <img src="/images/cross.svg" alt="cross" className="size-3" />
-        </button> */}
       </div>
     </div>
   );
