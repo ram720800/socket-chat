@@ -7,8 +7,8 @@ const ChatHeader = () => {
   return (
     <div className="w-full size-12 bg-[var(--color-bl3)] drop-shadow-2xl">
       <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <div className="relative p-2">
+        <div className="flex items-center">         
+          <div className="relative p-2 ml-8">
             <img
               src={selectedUser.profilePic || "/sc_mini.svg"}
               alt={selectedUser.fullName}

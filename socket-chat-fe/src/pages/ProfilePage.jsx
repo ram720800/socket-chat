@@ -7,10 +7,10 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "../store/useAuthStore.js";
-import { Camera } from "lucide-react";
 import { Loader } from "lucide-react";
 import { useAvatar } from "@/components/avatar.jsx";
 import { Link } from "react-router-dom";
+import { X } from "lucide-react";
 
 export const ProfilePage = () => {
   const {
@@ -40,34 +40,38 @@ export const ProfilePage = () => {
 
   return (
     <div className="flex justify-center items-center w-full min-h-screen g2">
-      <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute ]">
-      </div>
-      <div className="absolute z-50 top-14 right-96">
-      <Link to="/chat">
-          <img src="/images/cross.svg" alt="cross" className="size-5" />
+      <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute"></div>
+
+      <Card className="w-[300px] md:w-[600px] transition-all delay-5 bg-bl1 border-none mt-4 relative">
+        <Link
+          to="/chat"
+          className="absolute z-50 top-2 right-2 p-1 rounded-full border-2 border-wl3 transition"
+        >
+          <X className="size-5 text-wl3" />
         </Link>
-      </div>
-      <Card className="w-[360px] z-20 bg-[var(--color-bl2)] border-none mt-4 fixed max-lg:mt-10 max-lg:w-[300px]">
         <CardHeader>
-          <CardTitle className="text-center font-bold  text-[var(--color-wl2)] text-2xl">
-            Profile
+          <CardTitle className="text-start font-bold text-[var(--color-wl2)] text-2xl">
+            <div>My Account</div>
           </CardTitle>
-          <span className="text-sm text-center text-[var(--color-wl2)]">
-            This is how others will see you on the site.
-          </span>
         </CardHeader>
-        <CardContent className="flex flex-col items-center gap-4">
-          <div className="relative">
+        <CardContent className="flex flex-col items-center gap-4 ">
+          <div className="bg-r3 w-full rounded-t-md">
             <img
               src={selectedImg || authUser.profilePic || avatar}
               alt="user Avatar"
-              className="size-32 rounded-full object-cover bg-[var(--color-bl1)]"
+              className="relative top-14 left-4 size-24 rounded-full object-cover border-[6px] border-bl1 bg-bl3 "
             />
             <label
               htmlFor="avatar-upload"
-              className={`absolute bottom-0 right-0 hover:scale-105 p-2 rounded-full cursor-pointer transition-all duration-500`}
+              className={`absolute right-8 my-2 hover:scale-105 p-1 rounded-sm cursor-pointer transition-all duration-500 bg-b1 hover:bg-db2 text-wl1 text-sm font-medium`}
             >
-              <Camera className="size-5 text-[var(--color-wl1)] rounded-full" />
+              {isUpdating ? (
+                <>
+                  <Loader className="s-7 animate-spin" />
+                </>
+              ) : (
+                "Edit User Profile"
+              )}
               <input
                 type="file"
                 id="avatar-upload"
@@ -78,60 +82,37 @@ export const ProfilePage = () => {
               />
             </label>
           </div>
-          <p className="text-center text-sm text-[var(--color-wl2)]">
-            {isUpdating ? (
-              <>
-                <Loader className="s-10 animate-spin" />
-              </>
-            ) : (
-              ""
-            )}
-          </p>
-          <div className="space-y-4">
-            <div className="flex flex-row items-center rounded-sm bg-[var(--color-bl1)] w-auto p-2 mx-auto">
-              <div className="relative">
-                <img
-                  src={selectedImg || authUser.profilePic || avatar}
-                  alt="user Avatar"
-                  className="size-8 rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
-                />
-                <span className=" absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)] translate-y-[0.4rem] translate-x-[0.2rem]" />
-              </div>
-
-              <div className="flex flex-col ml-4 items-start">
-                <span className="text-[var(--color-wl2)] text-sm font-medium mx-3 -ml-0">
-                  {authUser?.fullName}
-                </span>
-                <span className="text-[var(--color-wl3)] text-xs">
-                  {authUser?.email}
-                </span>
-              </div>
-            </div>
-          </div>
         </CardContent>
-        <CardFooter>
-          <div className="bg-[var(--color-bl1)] w-auto mx-auto pr-20 p-2 rounded-sm">
-            <p className="text-[var(--color-wl2)] font-medium text-sm text-start">
-              Member Since
-            </p>
-            <div className="flex mt-2">
-              <div>
-                <img src="/sc_mini.svg" alt="mini" className="w-4 h-4 mr-2" />
-              </div>
-              <p className="text-[var(--color-wl3)] text-xs text-start ">
-                {authUser.createdAt?.split("T")[0]}
-              </p>
+        <CardFooter className="mt-8">
+          <div className="bg-bl2 w-full h-auto rounded-md p-4">
+            <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
+              Display Name
+            </div>
+            <div className=" text-sm text-wl1 font-normal mb-2">
+              {authUser.fullName}
+            </div>
+            <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
+              email
+            </div>
+            <div className=" text-sm text-wl1 font-normal mb-2">
+              {authUser.email}
             </div>
           </div>
         </CardFooter>
-        <div className="ml-22 mb-6">
-          <span className="text-xs text-[var(--color-wl1)] font-medium uppercase">
+        <div className="mx-7 mb-4">
+          <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
+            member since
+          </div>
+          <div className=" text-sm text-wl1 font-normal mb-2">
+            {authUser.createdAt?.split("T")[0]}
+          </div>
+          <div className="uppercase text-xs text-wl3 font-bold my-1">
             Account removal
-          </span>
+          </div>
           <div>
             <Button
               onClick={logOut}
-              className="text-wl1 w-26 h-7 text-xs font-medium !bg-[var(--color-bl1)] hover:!bg-[var(--color-r3)] !border-[var(--color-r3)] border-[1px]"
+              className="text-wl1 w-26 h-7 text-xs font-medium !bg-[var(--color-bl1)] hover:!bg-[var(--color-r3)] !border-[var(--color-r3)] border-[1px] cursor-pointer"
             >
               Disable Account
             </Button>

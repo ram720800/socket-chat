@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useChatStore } from "@/store/useChatStore";
 
 export const AnimatedBG1 = () => {
   return (
@@ -26,8 +27,11 @@ export const AnimatedBG2 = () => {
 };
 
 export const ChatSkeleton = () => {
+  const { selectedUser } = useChatStore();
   return (
-    <div className="space-y-4 w-20 lg:w-72 bg-bl2 mt-4 p-2">
+    <div className={`h-full w-64 space-y-4 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 py-1 bg-[var(--color-bl2)] ${
+      selectedUser ? "hidden md:block" : "block"
+    }`}>
       {[...Array(5)].map((_, index) => (
         <div key={index} className="flex gap-3 items-start w-[100%] mx-1">
           <Skeleton className="h-10 w-10 rounded-full bg-bl3" />

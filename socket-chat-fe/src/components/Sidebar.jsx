@@ -18,7 +18,11 @@ const Sidebar = () => {
   if (isUsersLoading) return <ChatSkeleton />;
 
   return (
-    <aside className="h-full w-64 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)] ">
+    <aside
+      className={`h-full w-64 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)] ${
+        selectedUser ? "hidden md:block" : "block"
+      }`}
+    >
       <div className="w-full p-2 h-28 border-b-2 border-[var(--color-bl1)]">
         <p className="uppercase font-bold text-xs text-[var(--color-lg4)] mx-4">
           direct messages
@@ -48,11 +52,13 @@ const Sidebar = () => {
                 alt={user.fullName}
                 className="size-10 rounded-full object-cover"
               />
-              {onlineUsers.includes(user._id) ? (
-                <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]"></span>
-              ) : (
-                <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-lg4)] rounded-full border-4 border-[var(--color-bl2)]"></span>
-              )}
+              <span
+                className={`absolute size-4 bottom-0 right-0 rounded-full ${
+                  onlineUsers.includes(user._id)
+                    ? "bg-[var(--color-g1)] border-4 border-[var(--color-bl1)]"
+                    : "bg-[var(--color-lg4)] border-4 border-[var(--color-bl2)]"
+                } `}
+              ></span>
             </div>
             <div className="text-left ml-2">
               <div className="font-medium text-md text-[var(--color-lg4)]">
@@ -61,22 +67,23 @@ const Sidebar = () => {
             </div>
           </button>
         ))}
-      </div>
-      <div className="w-64 bottom-0 fixed p-1 bg-[var(--color-dg3)] mt-2">
-        <div className="flex justify-start items-center">
-          <div className="relative">
-            <img
-              src={selectedImg || authUser.profilePic || avatar}
-              alt="user Avatar"
-              className="size-10 rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
-            />
-            <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]" />
-          </div>
-          <div className="flex flex-col justify-center leading-none mt-2">
-            <span className="text-[var(--color-wl2)] text-sm font-medium mx-3">
-              {authUser?.fullName}
-            </span>
-            <span className="text-xs text-[var(--color-wl3)] mx-3">Online</span>
+        <div className="w-64 h-auto bottom-0 fixed px-3 py-2 bg-[var(--color-dg3)] flex items-center justify-between mt-2">
+          <div className="flex items-center gap-1">
+            <div className="relative size-10">
+              <img
+                src={selectedImg || authUser.profilePic || avatar}
+                alt="user Avatar"
+                className="size-full rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
+              />
+              <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]" />
+            </div>
+
+            <div className="leading-none mt-2">
+              <p className="text-[var(--color-wl2)] text-sm font-medium mx-3">
+                {authUser?.fullName}
+              </p>
+              <p className="text-xs text-[var(--color-wl3)] mx-3">Online</p>
+            </div>
           </div>
           <div>
             <Link to="/profile">
