@@ -14,3 +14,35 @@ export function formatMessageTime(date) {
     pm: true,
   });
 }
+
+export const getRandomUserBg = (userId) => {
+  const colors = [
+    "bg-rd1",
+    "bg-rd2",
+    "bg-rd3",
+    "bg-rd4",
+    "bg-rd5",
+    "bg-rd6",
+    "bg-rd7",
+  ];
+
+  let sum = 0;
+  for (let i = 0; i < userId.length; i++) {
+    sum += userId.charCodeAt(i);
+  }
+  const index = sum % colors.length;
+  return colors[index];
+};
+
+export const getRandomBg = () => {
+  const colors = [
+    "bg-rd1",
+    "bg-rd2",
+    "bg-rd3",
+    "bg-rd4",
+    "bg-rd5",
+    "bg-rd6",
+    "bg-rd7",
+  ];
+  return colors[Math.floor(Math.random() * colors.length)];
+};

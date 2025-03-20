@@ -21,6 +21,14 @@
   --color-wl1: #e3e5e8;
   --color-wl2: #f2f3f5;
   --color-wl3: #b6b9be;
+
+  --color-rd1:#5865F2;
+  --color-rd2:#3BA55C;
+  --color-rd3:#FAA61A;
+  --color-rd4:#FF5688;
+  --color-rd5:#B674F1;
+  --color-rd6:#CD83CB;
+  --color-rd7:#ED4245;
 }
 
 html {

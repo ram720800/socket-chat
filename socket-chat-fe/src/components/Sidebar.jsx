@@ -2,14 +2,14 @@ import { useChatStore } from "@/store/useChatStore";
 import { ChatSkeleton } from "@/components/Animation";
 import { useEffect } from "react";
 import { useAuthStore } from "@/store/useAuthStore";
-import { useAvatar } from "@/components/avatar.jsx";
 import { Link } from "react-router-dom";
+import { getRandomUserBg } from "@/lib/utils";
 
 const Sidebar = () => {
   const { users, selectedUser, isUsersLoading, getUsers, setSelectedUser } =
     useChatStore();
   const { onlineUsers, authUser, selectedImg } = useAuthStore();
-  const avatar = useAvatar();
+  
 
   useEffect(() => {
     getUsers();
@@ -50,7 +50,7 @@ const Sidebar = () => {
               <img
                 src={user.profilePic || "/sc_mini.svg"}
                 alt={user.fullName}
-                className="size-10 rounded-full object-cover"
+                className={`size-10 rounded-full object-cover ${getRandomUserBg(authUser._id)}`}
               />
               <span
                 className={`absolute size-4 bottom-0 right-0 rounded-full ${
@@ -71,9 +71,9 @@ const Sidebar = () => {
           <div className="flex items-center gap-1">
             <div className="relative size-10">
               <img
-                src={selectedImg || authUser.profilePic || avatar}
+                src={selectedImg || authUser.profilePic || "/sc_mini.svg"}
                 alt="user Avatar"
-                className="size-full rounded-full object-cover border-[var(--color-dg3)] bg-[var(--color-bl3)]"
+                className={`size-full rounded-full object-cover border-[var(--color-dg3)] ${getRandomUserBg(authUser._id)}`}
               />
               <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]" />
             </div>

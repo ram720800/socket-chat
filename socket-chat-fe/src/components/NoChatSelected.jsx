@@ -1,9 +1,11 @@
 import { useAuthStore } from "@/store/useAuthStore";
 import { useChatStore } from "@/store/useChatStore";
 import { useState } from "react";
+import { motion } from "motion/react";
+import { getRandomUserBg } from "@/lib/utils";
 
 const NoChatSelected = () => {
-  const { users, setSelectedUser } = useChatStore();
+  const { users,selecteduser, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
   const [allUsers, setAllUsers] = useState(false);
 
@@ -45,7 +47,12 @@ const NoChatSelected = () => {
             <p className="absolute z-50 top-12 text-wl3 text-xs font-semibold mx-4 mt-2">
               All Members - {users.length}
             </p>
-            <div className="overflow-y-auto flex flex-col items-center mt-20">
+            <motion.div
+              initial={{ opacity: 0, y: -100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 100 }}
+              transition={{ duration: 0.5 }}
+              className="overflow-y-auto flex flex-col items-center mt-20">
               {users.map((user) => (
                 <div
                   key={user._id}
@@ -56,7 +63,7 @@ const NoChatSelected = () => {
                       <img
                         src={user.profilePic || "/sc_mini.svg"}
                         alt={user.fullName}
-                        className="size-full rounded-full object-cover"
+                        className={`size-full rounded-full object-cover ${getRandomUserBg(user._id)}`}
                       />
                       <span
                         className={`absolute size-4 bottom-0 right-0 rounded-full ${
@@ -81,7 +88,7 @@ const NoChatSelected = () => {
                   </button>
                 </div>
               ))}
-            </div>
+            </motion.div>
           </>
         ) : onlineFilteredUsers.length > 0 ? (
           <>

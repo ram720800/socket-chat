@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useChatStore } from "@/store/useChatStore";
 import { useAuthStore } from "@/store/useAuthStore";
 import { MessageSkeleton } from "./Animation";
-import { formatMessageTime } from "@/lib/utils";
+import { formatMessageTime, getRandomUserBg } from "@/lib/utils";
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
 import { motion } from "motion/react";
@@ -76,7 +76,7 @@ const ChatContainer = () => {
                 <img
                   src={selectedUser.profilePic || "/sc_mini.svg"}
                   alt={selectedUser.fullName}
-                  className="size-20 rounded-full object-cover border-1 border-bl1 bg-bl3 "
+                  className={`size-20 rounded-full object-cover border-1 border-bl1 ${getRandomUserBg(authUser._id)}`}
                 />
               </div>
             </div>
@@ -98,7 +98,7 @@ const ChatContainer = () => {
                         : selectedUser.profilePic || "/sc_mini.svg"
                     }
                     alt="profile pic"
-                    className="size-12 rounded-full object-cover bg-[var(--color-bl3)]"
+                    className={`size-12 rounded-full object-cover ${getRandomUserBg(authUser._id)}`}
                   />
                   <div>
                     <div className="flex mx-2">

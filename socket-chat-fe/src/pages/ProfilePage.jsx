@@ -8,9 +8,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "../store/useAuthStore.js";
 import { Loader } from "lucide-react";
-import { useAvatar } from "@/components/avatar.jsx";
 import { Link } from "react-router-dom";
 import { X } from "lucide-react";
+import { getRandomUserBg } from "@/lib/utils.js";
 
 export const ProfilePage = () => {
   const {
@@ -21,7 +21,6 @@ export const ProfilePage = () => {
     setSelectedImg,
     logOut,
   } = useAuthStore();
-  const avatar = useAvatar();
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -58,9 +57,9 @@ export const ProfilePage = () => {
           <div className="flex flex-col items-center gap-4 bg-bl1 rounded-b-md">
             <div className="bg-r3 w-full rounded-t-md">
               <img
-                src={selectedImg || authUser.profilePic || avatar}
+                src={selectedImg || authUser.profilePic || "/sc_mini.svg"}
                 alt="user Avatar"
-                className="relative top-14 left-4 size-24 rounded-full object-cover border-[6px] border-bl1 bg-bl3 "
+                className={`relative top-14 left-4 size-24 rounded-full object-cover border-[6px] border-bl1 ${getRandomUserBg(authUser._id)}`}
               />
               <label
                 htmlFor="avatar-upload"
