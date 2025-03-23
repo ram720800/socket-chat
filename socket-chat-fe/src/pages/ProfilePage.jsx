@@ -96,6 +96,12 @@ export const ProfilePage = () => {
               <div className=" text-sm text-wl1 font-normal mb-2">
                 {authUser.email}
               </div>
+              <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
+                Your interests
+              </div>
+              <div className=" text-sm text-wl1 font-normal mb-2">
+                {authUser?.interests || "#User"}
+              </div>
             </div>
             </div>
           </div>

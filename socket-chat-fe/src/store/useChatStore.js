@@ -9,6 +9,7 @@ export const useChatStore = create((set, get) => ({
   selectedUser: null,
   isUsersLoading: false,
   isMessagesLoading: false,
+  unReadMessages: {},
 
   getUsers: async () => {
     set({ isUsersLoading: true });
@@ -53,7 +54,7 @@ export const useChatStore = create((set, get) => ({
     const socket = useAuthStore.getState().socket;
 
     socket.on("newMessage", (newMessage) => {
-      if(newMessage.senderId !== selectedUser._id) return;
+      if (newMessage.senderId !== selectedUser._id) return;
       set({
         messages: [...get().messages, newMessage],
       });
@@ -61,7 +62,7 @@ export const useChatStore = create((set, get) => ({
   },
   unSubscribeToMessages: () => {
     const socket = useAuthStore.getState().socket;
-    socket.off("newMessage")
+    socket.off("newMessage");
   },
   setSelectedUser: (selectedUser) => set({ selectedUser }),
 }));

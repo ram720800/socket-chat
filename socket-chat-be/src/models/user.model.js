@@ -17,6 +17,9 @@ const userSchema = new Schema(
       required: true,
       unique: true
     },
+    interests: {
+      type: [String],
+    },
     profilePic: {
       type: String,
       default: "",

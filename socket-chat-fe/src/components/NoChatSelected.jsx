@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { getRandomUserBg } from "@/lib/utils";
 
 const NoChatSelected = () => {
-  const { users,selecteduser, setSelectedUser } = useChatStore();
+  const { users, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
   const [allUsers, setAllUsers] = useState(false);
 
@@ -15,14 +15,18 @@ const NoChatSelected = () => {
 
   return (
     <div className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] relative">
-      <div className="w-full absolute top-0 size-12 bg-[var(--color-bl2)]">
+      <div className="w-full absolute top-0 size-12 bg-[var(--color-bl2)] z-200">
         <div className="flex justify-start items-center gap-x-2 mx-1 py-2">
           <img src="/images/sc_friends.svg" alt="friends" className="size-6" />
           <div className="font-medium text-[var(--color-wl1)] mx-2">
             Friends
           </div>
           <div className="w-[0.1px] h-6 rounded-md bg-bl1 shadow-2xl"></div>
-          <div className={`relative z-200 hover:bg-bl3 border-1 border-g2 cursor-pointer rounded-md py-0.5 px-3 ${!allUsers? "bg-g1":"bg-bl3"}`}>
+          <div
+            className={`relative hover:bg-bl3 border-1 border-g2 cursor-pointer rounded-md py-0.5 px-3 ${
+              !allUsers ? "bg-g1" : "bg-bl3"
+            }`}
+          >
             <button
               className="text-wl1 text-sm font-medium"
               onClick={() => setAllUsers(false)}
@@ -30,7 +34,11 @@ const NoChatSelected = () => {
               Online
             </button>
           </div>
-          <div className={`relative z-200 hover:bg-bl3 cursor-pointer rounded-md py-0.5 px-3 ${allUsers?"bg-bl3":""}`}>
+          <div
+            className={`relative hover:bg-bl3 cursor-pointer rounded-md py-0.5 px-3 ${
+              allUsers ? "bg-bl3" : ""
+            }`}
+          >
             <button
               className="text-wl1 text-sm font-medium"
               onClick={() => setAllUsers(true)}
@@ -41,10 +49,10 @@ const NoChatSelected = () => {
         </div>
       </div>
 
-      <div>
+      <div className="overflow-y-auto">
         {allUsers ? (
           <>
-            <p className="absolute z-50 top-12 text-wl3 text-xs font-semibold mx-4 mt-2">
+            <p className="absolute w-full z-200 top-10 text-wl3 bg-bl2 text-xs font-semibold mt-2 px-2 py-1">
               All Members - {users.length}
             </p>
             <motion.div
@@ -52,7 +60,8 @@ const NoChatSelected = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 100 }}
               transition={{ duration: 0.5 }}
-              className="overflow-y-auto flex flex-col items-center mt-20">
+              className="overflow-y-auto flex flex-col items-center mt-20"
+            >
               {users.map((user) => (
                 <div
                   key={user._id}
@@ -63,7 +72,9 @@ const NoChatSelected = () => {
                       <img
                         src={user.profilePic || "/sc_mini.svg"}
                         alt={user.fullName}
-                        className={`size-full rounded-full object-cover ${getRandomUserBg(user._id)}`}
+                        className={`size-full rounded-full object-cover ${getRandomUserBg(
+                          user._id
+                        )}`}
                       />
                       <span
                         className={`absolute size-4 bottom-0 right-0 rounded-full ${
@@ -92,8 +103,8 @@ const NoChatSelected = () => {
           </>
         ) : onlineFilteredUsers.length > 0 ? (
           <>
-            <p className="absolute z-50 top-12 text-wl3 text-xs font-semibold mx-4 mt-2">
-              All Members - {onlineUsers.length - 1}
+            <p className="absolute w-full z-200 top-10 text-wl3 bg-bl2 text-xs font-semibold mt-2 px-2 py-1">
+              Online Members - {onlineUsers.length - 1}
             </p>
             <div className="overflow-y-auto flex flex-col items-center mt-20">
               {onlineFilteredUsers.map((user) => (
@@ -106,7 +117,9 @@ const NoChatSelected = () => {
                       <img
                         src={user.profilePic || "/sc_mini.svg"}
                         alt={user.fullName}
-                        className="size-full rounded-full object-cover"
+                        className={`size-full rounded-full object-cover ${getRandomUserBg(
+                          user._id
+                        )}`}
                       />
                       <span
                         className={`absolute size-4 bottom-0 right-0 rounded-full ${

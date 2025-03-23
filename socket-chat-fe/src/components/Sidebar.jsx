@@ -6,10 +6,14 @@ import { Link } from "react-router-dom";
 import { getRandomUserBg } from "@/lib/utils";
 
 const Sidebar = () => {
-  const { users, selectedUser, isUsersLoading, getUsers, setSelectedUser } =
-    useChatStore();
+  const {
+    users,
+    selectedUser,
+    isUsersLoading,
+    getUsers,
+    setSelectedUser,
+  } = useChatStore();
   const { onlineUsers, authUser, selectedImg } = useAuthStore();
-  
 
   useEffect(() => {
     getUsers();
@@ -37,49 +41,57 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-
-      <div className="overflow-y-auto w-64 py-3">
+      <div className="h-[calc(100vh-180px)] overflow-y-auto">
+      <div className="w-60 py-3">
         {users.map((user) => (
           <button
             key={user._id}
             onClick={() => setSelectedUser(user)}
             className={`p-3 flex items-center gap-2 transition-colors w-full rounded-lg hover:bg-bl3 my-1
               ${selectedUser?._id === user._id ? "bg-[var(--color-dg3)]" : ""}`}
-          >
-            <div className="relative">
-              <img
-                src={user.profilePic || "/sc_mini.svg"}
-                alt={user.fullName}
-                className={`size-10 rounded-full object-cover ${getRandomUserBg(authUser._id)}`}
-              />
-              <span
-                className={`absolute size-4 bottom-0 right-0 rounded-full ${
-                  onlineUsers.includes(user._id)
-                    ? "bg-[var(--color-g1)] border-4 border-[var(--color-bl1)]"
-                    : "bg-[var(--color-lg4)] border-4 border-[var(--color-bl2)]"
-                } `}
-              ></span>
-            </div>
-            <div className="text-left ml-2">
-              <div className="font-medium text-md text-[var(--color-lg4)]">
-                {user.fullName}
+            >
+              <div className="relative">
+                <img
+                  src={user.profilePic || "/sc_mini.svg"}
+                  alt={user.fullName}
+                  className={`size-10 rounded-full object-cover ${getRandomUserBg(
+                    user._id
+                  )}`}
+                />
+                <span
+                  className={`absolute size-4 bottom-0 right-0 rounded-full ${
+                    onlineUsers.includes(user._id)
+                      ? "bg-[var(--color-g1)] border-4 border-[var(--color-bl1)]"
+                      : "bg-[var(--color-lg4)] border-4 border-[var(--color-bl2)]"
+                  } `}
+                ></span>
               </div>
-            </div>
-          </button>
+              <div className="text-left ml-2 relative">
+                <div className="font-medium text-md text-[var(--color-lg4)]">
+                  {user.fullName}
+                </div>
+                <div className="font-medium text-[10px] text-[var(--color-lg4)]">
+                  {user.interests}
+                </div>
+              </div>
+            </button>
         ))}
+        <div className="mt-10">
         <div className="w-64 h-auto bottom-0 fixed px-3 py-2 bg-[var(--color-dg3)] flex items-center justify-between mt-2">
           <div className="flex items-center gap-1">
             <div className="relative size-10">
               <img
                 src={selectedImg || authUser.profilePic || "/sc_mini.svg"}
                 alt="user Avatar"
-                className={`size-full rounded-full object-cover border-[var(--color-dg3)] ${getRandomUserBg(authUser._id)}`}
+                className={`size-full rounded-full object-cover border-[var(--color-dg3)] ${getRandomUserBg(
+                  authUser._id
+                )}`}
               />
               <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]" />
             </div>
 
             <div className="leading-none mt-2">
-              <p className="text-[var(--color-wl2)] text-sm font-medium mx-3">
+              <p className="text-[var(--color-wl2)] text-sm font-medium mx-3 w-full">
                 {authUser?.fullName}
               </p>
               <p className="text-xs text-[var(--color-wl3)] mx-3">Online</p>
@@ -90,8 +102,10 @@ const Sidebar = () => {
               <img src="/images/gear.svg" alt="gear" className="size-5 ml-16" />
             </Link>
           </div>
+          </div>
         </div>
       </div>
+      </div>   
     </aside>
   );
 };

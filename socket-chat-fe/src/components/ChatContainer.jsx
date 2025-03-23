@@ -9,6 +9,7 @@ import { motion } from "motion/react";
 
 const ChatContainer = () => {
   const {
+    users,
     messages,
     getMessages,
     isMessagesLoading,
@@ -76,7 +77,7 @@ const ChatContainer = () => {
                 <img
                   src={selectedUser.profilePic || "/sc_mini.svg"}
                   alt={selectedUser.fullName}
-                  className={`size-20 rounded-full object-cover border-1 border-bl1 ${getRandomUserBg(authUser._id)}`}
+                  className={`size-20 rounded-full object-cover border-1 border-bl1 ${getRandomUserBg(selectedUser._id)}`}
                 />
               </div>
             </div>
@@ -86,7 +87,7 @@ const ChatContainer = () => {
               </h4>
               <p className="text-lg4 text-sm mt-4">{`This is the beginning of your direct message history with ${selectedUser.fullName}.`}</p>
             </div>
-            <div className="my-6 mx-4 w-auto h-[0.1px] bg-bl2 shadow-2xl"></div>
+            <div className="my-6 mx-4 w-auto h-[0.1px] bg-wl3/80 shadow-2xl"></div>
 
             {messages.map((message) => (
               <div key={message._id} ref={messageEndRef}>
@@ -98,7 +99,7 @@ const ChatContainer = () => {
                         : selectedUser.profilePic || "/sc_mini.svg"
                     }
                     alt="profile pic"
-                    className={`size-12 rounded-full object-cover ${getRandomUserBg(authUser._id)}`}
+                    className={`size-12 rounded-full object-cover ${getRandomUserBg(selectedUser._id)}`}
                   />
                   <div>
                     <div className="flex mx-2">

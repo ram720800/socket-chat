@@ -7,7 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Eye, EyeOff, Loader } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore.js";
@@ -21,6 +21,7 @@ export const SignUpPage = () => {
     fullName: "",
     password: "",
     email: "",
+    interests:"",
   });
 
   const { signUp, isSigningUp } = useAuthStore();
@@ -75,6 +76,17 @@ export const SignUpPage = () => {
               value={formData.fullName}
               onChange={handleChange}
               required
+              className="border-none bg-[var(--color-bl1)]"
+            />
+            <span className="text-xs font-bold uppercase text-[var(--color-wl3)]">
+             Show off your interests!
+            </span>
+            <Input
+              type="text"
+              name="interests"
+              placeholder="#developer, #student, #Web3....."
+              value={formData.interests}
+              onChange={handleChange}
               className="border-none bg-[var(--color-bl1)]"
             />
             <span className="text-xs font-bold uppercase text-[var(--color-wl3)]">

@@ -44,7 +44,7 @@ const MessageInput = () => {
       setPreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error) {
-      console.error("message failed",error);
+      console.error("message failed", error);
     }
   };
 
@@ -71,13 +71,19 @@ const MessageInput = () => {
 
       <form onSubmit={handleSendMessage} className="flex items-center gap-2">
         <div className="flex flex-1 gap-2 relative">
-          <input
+          <textarea
             type="text"
             name="text"
             placeholder={`Message @${selectedUser?.fullName}`}
             value={text}
-            onChange={(e) => setText(e.target.value)}
-            className="border-none outline-none focus:ring-0 z-50 bg-[var(--color-bl2)] shadow-2xl px-6 py-3 rounded-lg text-lg font-medium w-full"
+            onChange={(e) => {
+              setText(e.target.value);
+              e.target.style.height = "auto";
+              e.target.style.height = `${e.target.scrollHeight}px`;
+            }}
+            rows={1}
+            className="border-none outline-none focus:ring-0 z-50 bg-[var(--color-bl2)] shadow-2xl px-6 py-3 rounded-lg text-lg font-medium w-full resize-none 
+    overflow-y-auto pr-20"
           />
           <input
             type="file"

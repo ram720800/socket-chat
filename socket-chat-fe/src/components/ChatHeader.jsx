@@ -4,7 +4,7 @@ import { getRandomUserBg } from "@/lib/utils";
 
 const ChatHeader = () => {
   const { selectedUser } = useChatStore();
-  const { onlineUsers, authUser } = useAuthStore();
+  const { onlineUsers } = useAuthStore();
   return (
     <div className="w-full size-12 bg-[var(--color-bl3)] drop-shadow-2xl">
       <div className="flex items-center justify-between">
@@ -13,7 +13,7 @@ const ChatHeader = () => {
             <img
               src={selectedUser.profilePic || "/sc_mini.svg"}
               alt={selectedUser.fullName}
-              className={`size-7 rounded-full object-cover border-[var(--color-dg3)] ${getRandomUserBg(authUser._id)}`}
+              className={`size-7 rounded-full object-cover border-[var(--color-dg3)] ${getRandomUserBg(selectedUser._id)}`}
             />
             {onlineUsers.includes(selectedUser._id) ? (
               <span className="absolute size-4 bottom-1 right-1 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]"></span>

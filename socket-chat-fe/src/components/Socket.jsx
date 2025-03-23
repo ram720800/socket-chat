@@ -24,7 +24,9 @@ const Socket = () => {
             <img
               src="/images/sc_before.svg"
               alt="before"
-              className={`size-12 cursor-pointer group-hover:rounded-full transition-all duration-100 ${!selectedUser ? "rounded-full":""}`}
+              className={`size-12 cursor-pointer group-hover:rounded-full transition-all duration-100 ${
+                !selectedUser ? "rounded-full" : ""
+              }`}
             />
           </button>
           <div className="absolute left-[4rem] top-1/2 transform -translate-y-1/2 bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none">

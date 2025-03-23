@@ -1,6 +1,5 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Navbar } from "./components/Navbar";
 import { LandingPage } from "./pages/LandingPage";
 import { SignUpPage } from "./pages/SignUpPage";
 import { SignInPage } from "./pages/SignInPage";
@@ -31,7 +30,6 @@ function App() {
 
   return (
     <div>
-      <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route

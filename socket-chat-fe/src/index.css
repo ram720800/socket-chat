@@ -21,6 +21,7 @@
   --color-wl1: #e3e5e8;
   --color-wl2: #f2f3f5;
   --color-wl3: #b6b9be;
+  --color-pc1: #21243B;
 
   --color-rd1:#5865F2;
   --color-rd2:#3BA55C;
@@ -31,7 +32,7 @@
   --color-rd7:#ED4245;
 }
 
-html {
+body,html {
   font-family: var(--font-montserrat);
 }
 
@@ -85,17 +86,19 @@ input {
 
 .body-1 {
   font-size: 16px;
-  line-height: 36px;
+  line-height: 24px;
   font-family: var(--font-montserrat);
   letter-spacing: 0.05em;
-  color: var(--color-lg4);
+  color: var(--color-wl1);
 }
 
 .body-2 {
-  font-size: 18px;
+  font-size: 28px;
   font-weight: 600;
-  line-height: 32px;
+  line-height: 18px;
   font-family: var(--font-montserrat);
+  letter-spacing: 0.05em;
+  color: var(--color-wl1);
 }
 
 .body-3 {
@@ -149,21 +152,28 @@ input {
 
 /* START of Gradients */
 
+
 .g1 {
-  background: linear-gradient(90deg, #8ea1e1, #7289da, #5865f2);
+  background: linear-gradient(1800deg, #8ea1e1, #7289da, #5865f2);
 }
 .g2 {
-  background: linear-gradient(#23272a, #7e61ff 100%, #6668eb 0%);
+  background: linear-gradient(160deg, #23272a 0%, #7e61ff 100%, #6668eb 0%, #23272a);
 }
 .g3 {
-  background: linear-gradient(#cd83cb, #b674f1);
+  background: linear-gradient(180deg, #082F0D 50%, #189529 100%);
 }
 .g4 {
-  background: linear-gradient(#4e1bf5, #5e4eee);
+  background: linear-gradient(180deg, #130F33 50%, #4630ED 100%);
+}
+.g5{
+  background: linear-gradient(180deg, #87185C 50%, #EF24A1 100%);
+}
+.g6 {
+  background: linear-gradient(90deg, #433C5A 0%, #3B2E90 100%);
 }
 
 .container {
-  @apply mx-auto max-w-[1252px] px-16 max-xl:px-10 max-lg:px-6 max-sm:px-4;
+  @apply mx-auto max-w-[1252px] px-10 max-xl:px-8 max-lg:px-6 max-sm:px-4;
 }
 
 .disabled\:opacity-50:disabled {

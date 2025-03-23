@@ -16,6 +16,11 @@ export function formatMessageTime(date) {
 }
 
 export const getRandomUserBg = (userId) => {
+  if (!userId || typeof userId !== "string") {
+    console.error("Invalid userId:", userId);
+    return "bg-default";
+  }
+
   const colors = [
     "bg-rd1",
     "bg-rd2",
