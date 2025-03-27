@@ -1,13 +1,14 @@
 import { motion } from "motion/react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useChatStore } from "@/store/useChatStore";
+import { useState, useEffect } from "react";
 
 export const AnimatedBG1 = () => {
   return (
     <motion.div
       className="h-screen bg-[url('/images/bat_sc.png')] bg-no-repeat bg-[350px] bg-[length:150px_150px] max-lg:bg-[100px]"
       animate={{
-        backgroundPositionY: ["0%", "2%", "0%"],
+        backgroundPositionY: ["-1%", "-7%", "-1%"],
       }}
       transition={{ duration: 4, repeat: Infinity, times: [0, 0.3, 1] }}
     ></motion.div>
@@ -19,7 +20,7 @@ export const AnimatedBG2 = () => {
     <motion.div
       className="h-screen bg-[url('/images/coin_sc.png')] bg-no-repeat bg-[850px] bg-[length:150px_150px] max-lg:bg-[100px]"
       animate={{
-        backgroundPositionY: ["0%", "2%", "0%"],
+        backgroundPositionY: ["-1%", "-7%", "-1%"],
       }}
       transition={{ duration: 4, repeat: Infinity, times: [0, 0.3, 1] }}
     ></motion.div>
@@ -29,9 +30,11 @@ export const AnimatedBG2 = () => {
 export const ChatSkeleton = () => {
   const { selectedUser } = useChatStore();
   return (
-    <div className={`h-full w-64 space-y-4 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 py-1 bg-[var(--color-bl2)] ${
-      selectedUser ? "hidden md:block" : "block"
-    }`}>
+    <div
+      className={`h-full w-64 space-y-4 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 py-1 bg-[var(--color-bl2)] ${
+        selectedUser ? "hidden md:block" : "block"
+      }`}
+    >
       {[...Array(5)].map((_, index) => (
         <div key={index} className="flex gap-3 items-start w-[100%] mx-1">
           <Skeleton className="h-10 w-10 rounded-full bg-bl3" />
@@ -56,3 +59,28 @@ export const MessageSkeleton = () => {
     </div>
   );
 };
+
+const ParallaxImage = ({ src, alt, initialTop, speed }) => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handelScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener("scroll", handelScroll);
+    return () => window.removeEventListener("scroll", handelScroll);
+  }, []);
+
+  return (
+    <div
+      className="absolut transition-transform duration-200 ease-out"
+      style={{
+        top: `${initialTop}px`,
+        transform: `translateY(${scrollY * speed}px)`,
+      }}
+    >
+      <img src={src} alt={alt} className="size-40" />
+    </div>
+  );
+};
+export default ParallaxImage;

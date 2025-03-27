@@ -63,7 +63,7 @@ export const ProfilePage = () => {
               />
               <label
                 htmlFor="avatar-upload"
-                className={`absolute right-8 my-2 hover:scale-105 p-1 rounded-sm cursor-pointer transition-all duration-500 bg-b1 hover:bg-db2 text-wl1 text-sm max-sm:text-xs font-medium`}
+                className={`absolute right-8 my-2 hover:scale-105 p-1 rounded-sm cursor-pointer transition-all duration-500 bg-b1 hover:bg-db2 text-wl1 text-sm max-sm:text-xs font-medium max-w-fit`}
               >
                 {isUpdating ? (
                   <>

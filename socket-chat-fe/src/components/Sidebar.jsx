@@ -6,13 +6,8 @@ import { Link } from "react-router-dom";
 import { getRandomUserBg } from "@/lib/utils";
 
 const Sidebar = () => {
-  const {
-    users,
-    selectedUser,
-    isUsersLoading,
-    getUsers,
-    setSelectedUser,
-  } = useChatStore();
+  const { users, selectedUser, isUsersLoading, getUsers, setSelectedUser } =
+    useChatStore();
   const { onlineUsers, authUser, selectedImg } = useAuthStore();
 
   useEffect(() => {
@@ -23,7 +18,7 @@ const Sidebar = () => {
 
   return (
     <aside
-      className={`h-full w-64 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)] ${
+      className={`h-full w-[354px] md:w-64 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)] ${
         selectedUser ? "hidden md:block" : "block"
       }`}
     >
@@ -41,13 +36,13 @@ const Sidebar = () => {
           </button>
         </div>
       </div>
-      <div className="h-[calc(100vh-180px)] overflow-y-auto">
-      <div className="w-60 py-3">
-        {users.map((user) => (
-          <button
-            key={user._id}
-            onClick={() => setSelectedUser(user)}
-            className={`p-3 flex items-center gap-2 transition-colors w-full rounded-lg hover:bg-bl3 my-1
+      <div className="h-[calc(100vh-180px)] overflow-y-auto scroll-hidden">
+        <div className="w-[354px] md:w-64 py-3">
+          {users.map((user) => (
+            <button
+              key={user._id}
+              onClick={() => setSelectedUser(user)}
+              className={`p-3 flex items-center gap-2 transition-colors w-full rounded-lg hover:bg-bl3 my-1
               ${selectedUser?._id === user._id ? "bg-[var(--color-dg3)]" : ""}`}
             >
               <div className="relative">
@@ -75,37 +70,43 @@ const Sidebar = () => {
                 </div>
               </div>
             </button>
-        ))}
-        <div className="mt-10">
-        <div className="w-64 h-auto bottom-0 fixed px-3 py-2 bg-[var(--color-dg3)] flex items-center justify-between mt-2">
-          <div className="flex items-center gap-1">
-            <div className="relative size-10">
-              <img
-                src={selectedImg || authUser.profilePic || "/sc_mini.svg"}
-                alt="user Avatar"
-                className={`size-full rounded-full object-cover border-[var(--color-dg3)] ${getRandomUserBg(
-                  authUser._id
-                )}`}
-              />
-              <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]" />
-            </div>
+          ))}
+          <div className="mt-10 w-[354px] md:w-64 h-auto bottom-0 fixed">
+            <div className="p-2 bg-[var(--color-dg3)] flex items-center justify-between">
+              <Link to="/profile" className="flex-shrink-0">
+                <div className="flex items-center hover:bg-bl3 rounded p-1 cursor-pointer">
+                  <div className="relative size-10">
+                    <img
+                      src={selectedImg || authUser.profilePic || "/sc_mini.svg"}
+                      alt="user Avatar"
+                      className={`size-full rounded-full object-cover border-[var(--color-dg3)] ${getRandomUserBg(
+                        authUser._id
+                      )}`}
+                    />
+                    <span className="absolute size-4 bottom-0 right-0 bg-[var(--color-g1)] rounded-full border-4 border-[var(--color-bl1)]" />
+                  </div>
 
-            <div className="leading-none mt-2">
-              <p className="text-[var(--color-wl2)] text-sm font-medium mx-3 w-full">
-                {authUser?.fullName}
-              </p>
-              <p className="text-xs text-[var(--color-wl3)] mx-3">Online</p>
+                  <div className="leading-none mt-2 min-w-0 flex-1">
+                    <p className="text-[var(--color-wl2)] text-sm font-medium mx-3 truncate w-28">
+                      {authUser?.fullName}
+                    </p>
+                    <p className="text-xs text-[var(--color-wl3)] mx-3">
+                      Online
+                    </p>
+                  </div>
+                </div>
+              </Link>
+              <div>
+                <Link to="/profile" className="flex-shrink-0">
+                  <div className="hover:bg-bl3 p-1 rounded">
+                    <img src="/images/gear.svg" alt="gear" className="size-5" />
+                  </div>
+                </Link>
+              </div>
             </div>
-          </div>
-          <div>
-            <Link to="/profile">
-              <img src="/images/gear.svg" alt="gear" className="size-5 ml-16" />
-            </Link>
-          </div>
           </div>
         </div>
       </div>
-      </div>   
     </aside>
   );
 };

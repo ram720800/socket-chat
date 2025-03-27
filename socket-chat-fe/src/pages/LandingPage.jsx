@@ -1,28 +1,36 @@
 import { Link } from "react-router-dom";
+import { useAuthStore } from "@/store/useAuthStore";
+import ParallaxImage from "@/components/Animation";
 
 export const LandingPage = () => {
+  const { authUser } = useAuthStore();
   return (
     <div className="g2 relative h-full w-full overflow-hidden pt-5 md:pt-10 overflow-x-hidden">
       <div
-        className="absolute inset-0 bg-black/10"
+        className="absolute inset-0"
         style={{
           backgroundImage: "url('/sc_bg_img.png')",
           backgroundSize: "contain",
-          backgroundRepeat: "no-repeat",
+          backgroundRepeat: "repeat",
           backgroundPosition: "center",
         }}
       ></div>
       <div className="container relative z-100">
         <div className="flex justify-between items-center">
-          <div className="">
+          <div>
             <img src="/Sec-logo.svg" alt="socket" width={150} height={95} />
           </div>
           <div className="flex items-center gap-4">
-            <Link to="/signup">
-              <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-xs py-1 px-2 rounded-xl md:text-sm">
-                Signup
-              </button>
-            </Link>
+            {!authUser ? (
+              <Link to="/signup">
+                <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-xs py-1 px-2 rounded-xl md:text-sm">
+                  Signup
+                </button>
+              </Link>
+            ) : (
+              ""
+            )}
+
             <Link to="/signin">
               <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-xs py-1 px-2 rounded-xl md:text-sm">
                 Signin
@@ -32,15 +40,6 @@ export const LandingPage = () => {
         </div>
 
         <div className="relative flex flex-col-reverse md:flex-row items-center justify-between gap-10 mt-20">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url('/sc_bg_img.png')",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-            }}
-          ></div>
           <div className="w-[320px] md:w-[480px]">
             <h2 className="text-wl2 text-center text-3xl md:text-start md:text-4xl xl:text-6xl font-extrabold">
               Chat That's All About Tech & Innovation
@@ -96,8 +95,14 @@ export const LandingPage = () => {
           </div>
         </div>
 
-        <div className="my-32">
-          <div className="bg-wl1/10 backdrop-blur-4xl border border-wl1/20 shadow-lg rounded-4xl">
+        <div className="relative my-32">
+          <ParallaxImage
+            src="/images/fry_sc.png"
+            alt="fry"
+            initialTop={-80}
+            speed={0.2}
+          />
+          <div className="relative z-10 bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg rounded-4xl">
             <div className="flex flex-col-reverse md:flex-row justify-between items-center">
               <div className="relative w-[340px] md:w-[648px]">
                 <div className="relative px-8 py-4 lg:px-32 lg:py-16 m-6 g5 rounded-4xl">
@@ -124,17 +129,8 @@ export const LandingPage = () => {
           </div>
         </div>
 
-        <div className="my-32 relative">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url('/sc_bg_img.png')",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-            }}
-          ></div>
-          <div className="bg-wl1/10 backdrop-blur-4xl border border-wl1/20 shadow-lg rounded-4xl">
+        <div className="relative my-40">
+          <div className="relative z-10 bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg rounded-4xl">
             <div className="flex flex-col-reverse md:flex-row-reverse justify-between items-center">
               <div className="relative w-[340px] md:w-[648px]">
                 <div className="relative px-8 py-4 lg:px-32 lg:py-16 m-6 g3 rounded-4xl">
@@ -161,20 +157,11 @@ export const LandingPage = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
 
-        <div className="my-32 relative">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url('/sc_bg_img.png')",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-            }}
-          ></div>
-          <div className="bg-wl1/10 backdrop-blur-4xl border border-wl1/20 shadow-lg rounded-4xl">
+        <div className="my-40 relative">
+          <div className="bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg rounded-4xl">
             <div className="flex flex-col-reverse md:flex-row justify-between items-center">
               <div className="relative w-[340px] md:w-[648px]">
                 <div className="relative px-8 py-4 lg:px-32 lg:py-16 m-6 g4 rounded-4xl">
@@ -203,19 +190,18 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
+          <div className="absolute -top-150 left-250 z-100">
+            <ParallaxImage
+              src="/images/onion.png"
+              alt="onion"
+              initialTop={0}
+              speed={0.2}
+            />
+          </div>
         </div>
 
-        <div className="mt-32 mb-16 relative">
-          <div
-            className="absolute inset-0"
-            style={{
-              backgroundImage: "url('/sc_bg_img.png')",
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-            }}
-          ></div>
-          <div className="bg-wl1/10 backdrop-blur-4xl border border-wl1/20 shadow-lg rounded-4xl">
+        <div className="mt-40 mb-16 relative">
+          <div className="bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg rounded-4xl">
             <div className="flex flex-col-reverse md:flex-row-reverse justify-between items-center">
               <div className="relative w-[340px] md:w-[648px]">
                 <div className="relative px-8 py-4 lg:px-16 lg:py-16 m-6 g1 rounded-4xl">
@@ -239,11 +225,28 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
+          <div className="absolute -top-200 -z-1">
+            <ParallaxImage
+              src="/images/ball_sc.png"
+              alt="ball"
+              initialTop={0}
+              speed={0.2}
+            />
+          </div>
         </div>
 
+        <div className="relative">
+        <div className="absolute -top-200 left-250 -z-1">
+            <ParallaxImage
+              src="/images/coin_sc.png"
+              alt="ball"
+              initialTop={0}
+              speed={0.2}
+            />
+          </div>
         <div className="text-wl1 text-lg mx-auto md:text-2xl lg:text-4xl lg:mx-40 font-extrabold text-center">
           YOU CAN'T SCROLL ANYMORE. BETTER GO CHAT.
-          <div className="my-10">
+          <div className="mt-10 mb-32">
             <Link to="/signup">
               <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-sm py-1 px-2 rounded-xl md:text-xl">
                 Signup
@@ -253,16 +256,19 @@ export const LandingPage = () => {
           <div className="flex items-center justify-center w-full">
             <img src="/images/socketChat.svg" alt="sc" className="w-[1200px]" />
           </div>
-        </div>
+          </div>
+          </div>
 
-        
+
       </div>
       <div className="w-full bg-pc1/30 p-10">
         <div className="flex items-center justify-between">
           <img src="/Sec-logo.svg" alt="sc" width={200} height={200} />
-          <h1 className="text-lg font-extrabold md:text-xl lg:text-4xl    text-wl1">By ram72</h1>
-          </div>
+          <h1 className="text-lg font-extrabold md:text-xl lg:text-4xl text-wl1">
+            By ram72
+          </h1>
         </div>
+      </div>
     </div>
   );
 };
