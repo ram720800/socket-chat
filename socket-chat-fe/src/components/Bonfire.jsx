@@ -1,13 +1,21 @@
-import React from "react";
+import { useChatStore } from "@/store/useChatStore";
 
 const Bonfire = () => {
+  const { setSelectedUser } = useChatStore();
   return (
     <div className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] relative">
       <div className="flex items-center gap-2 w-[100%] size-12 bg-[var(--color-bl3)] drop-shadow-2xl">
+        <button
+          className="relative z-100"
+          onClick={() => setSelectedUser(null)}
+        >
+          <img
+            src="/images/arrow.png"
+            alt="back"
+            className="size-6 cursor-pointer"
+          />
+        </button>
         <div>
-          <img src="/images/arrow.png" alt="back" className="size-6 cursor-pointer"/>
-        </div>
-        <div className="">
           <img
             src="/images/bonfire.svg"
             alt="bonfirebot"
@@ -30,12 +38,16 @@ const Bonfire = () => {
           </div>
         </div>
         <div className="space-y-2 mx-4 mt-4">
-          <h4 className="font-semibold text-wl1 text-3xl">Hi, Bonfirebot here</h4>
+          <h4 className="font-semibold text-wl1 text-3xl">
+            Hi, Bonfirebot here
+          </h4>
           <p className="text-lg4 text-sm mt-4">{`This is the very beginning of your direct message history with Bonfirebot. Only the two of you are in this conversation.`}</p>
         </div>
         <div className="my-6 mx-4 w-auto h-[0.1px] bg-lg4 shadow-2xl"></div>
 
-        <div className="flex justify-center items-center text-r3">This is the official bot of socketChat. Upcomming in v2</div>
+        <div className="flex justify-center items-center text-r3">
+          This is the official bot of socketChat. Upcomming in v2
+        </div>
       </div>
     </div>
   );

@@ -18,9 +18,9 @@ export const LandingPage = () => {
       <div className="container relative z-100">
         <div className="flex justify-between items-center">
           <div>
-            <img src="/Sec-logo.svg" alt="socket" width={150} height={95} />
+            <img src="/Sec-logo.svg" alt="socket" width={180} height={125} />
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 md:gap-4">
             {!authUser ? (
               <Link to="/signup">
                 <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-xs py-1 px-2 rounded-xl md:text-sm">
@@ -258,8 +258,6 @@ export const LandingPage = () => {
           </div>
           </div>
           </div>
-
-
       </div>
       <div className="w-full bg-pc1/30 p-10">
         <div className="flex items-center justify-between">

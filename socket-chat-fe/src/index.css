@@ -172,7 +172,7 @@ input {
   background: linear-gradient(180deg, #130f33 50%, #4630ed 100%);
 }
 .g5 {
-  background: linear-gradient(180deg, #87185c 50%, #ef24a1 100%);
+  background: linear-gradient(180deg, #520234 50%, #ef24a1 100%);
 }
 .g6 {
   background: linear-gradient(90deg, #433c5a 0%, #3b2e90 100%);
@@ -204,6 +204,6 @@ input {
   background: var(--color-bl2);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-bl1);
+  background: var(--color-wl3);
   border-radius: 4px;
 }
