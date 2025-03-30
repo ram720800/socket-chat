@@ -59,6 +59,17 @@ export const MessageSkeleton = () => {
     </div>
   );
 };
+export const SocketSkeleton = () => {
+  return (
+    <div className="space-y-6 min-w-[4.5rem] mt-4 bg-[var(--color-bl1)]">
+      {[...Array(6)].map((_, index) => (
+        <div key={index} className="relative z-100 flex justify-center items-center">
+          <Skeleton className="h-12 w-12 rounded-md bg-bl3" />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 const ParallaxImage = ({ src, alt, initialTop, speed }) => {
   const [scrollY, setScrollY] = useState(0);

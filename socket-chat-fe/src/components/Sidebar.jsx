@@ -1,5 +1,6 @@
 import { useChatStore } from "@/store/useChatStore";
-import { ChatSkeleton } from "@/components/Animation";
+import { useGroupStore } from "@/store/useGroupStore";
+import { ChatSkeleton } from "./Animation";
 import { useEffect } from "react";
 import { useAuthStore } from "@/store/useAuthStore";
 import { Link } from "react-router-dom";
@@ -9,6 +10,7 @@ const Sidebar = () => {
   const { users, selectedUser, isUsersLoading, getUsers, setSelectedUser } =
     useChatStore();
   const { onlineUsers, authUser, selectedImg } = useAuthStore();
+  const { selectedGroup } = useGroupStore();
 
   useEffect(() => {
     getUsers();
@@ -19,7 +21,7 @@ const Sidebar = () => {
   return (
     <aside
       className={`h-full w-[354px] md:w-64 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)] ${
-        selectedUser ? "hidden md:block" : "block"
+        selectedUser || selectedGroup ? "hidden md:block" : "block"
       }`}
     >
       <div className="w-full p-2 h-28 border-b-2 border-[var(--color-bl1)]">

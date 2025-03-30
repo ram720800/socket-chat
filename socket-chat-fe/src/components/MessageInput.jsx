@@ -1,9 +1,11 @@
 import { useChatStore } from "@/store/useChatStore";
+import { useGroupStore } from "@/store/useGroupStore";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
 
 const MessageInput = () => {
   const { sendMessage, selectedUser } = useChatStore();
+  const { selectedGroup, sendGroupMessage } = useGroupStore();
   const [text, setText] = useState("");
   const [preview, setPreview] = useState(null);
   const fileInputRef = useRef(null);
@@ -36,10 +38,17 @@ const MessageInput = () => {
     e.preventDefault();
     if (!text.trim() && !preview) return;
     try {
-      await sendMessage({
-        text: text.trim(),
-        image: preview,
-      });
+      if (selectedGroup) {
+        await sendGroupMessage({
+          text: text.trim(),
+          image: preview,
+        });
+      } else if (selectedUser) {
+        await sendMessage({
+          text: text.trim(),
+          image: preview,
+        });
+      }
       setText("");
       setPreview(null);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -74,7 +83,13 @@ const MessageInput = () => {
           <textarea
             type="text"
             name="text"
-            placeholder={`Message @${selectedUser?.fullName}`}
+            placeholder={
+              selectedUser
+                ? `Message @${selectedUser.fullName}`
+                : selectedGroup
+                ? `Message @${selectedGroup.groupName}`
+                : "Type a message..."
+            }
             value={text}
             onChange={(e) => {
               setText(e.target.value);
@@ -82,7 +97,7 @@ const MessageInput = () => {
               e.target.style.height = `${e.target.scrollHeight}px`;
             }}
             rows={1}
-            className="border-none outline-none focus:ring-0 z-50 bg-[var(--color-bl2)] shadow-2xl px-6 py-3 rounded-lg text-lg font-medium w-full resize-none 
+            className="text-wl1 border-none outline-none focus:ring-0 z-50 bg-[var(--color-bl2)] shadow-2xl px-6 py-3 rounded-lg text-lg font-medium w-full resize-none 
     overflow-y-auto pr-20"
           />
           <input

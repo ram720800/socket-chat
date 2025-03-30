@@ -1,6 +1,7 @@
 import express from "express";
 import authRouter from "./routes/auth.route.js";
 import messageRouter from "./routes/message.route.js";
+import groupRouter from "./routes/group.route.js";
 import dotenv from "dotenv";
 import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
@@ -19,6 +20,7 @@ app.use(
 
 app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRouter);
+app.use("/api/groups", groupRouter);
 
 const PORT = process.env.PORT;
 server.listen(PORT, () => {

@@ -11,11 +11,11 @@ const io = new Server(server, {
   },
 });
 
+const userSocketMap = {};
+
 export function getReceiverSocketId(userId) {
   return userSocketMap[userId];
 }
-
-const userSocketMap = {};
 
 io.on("connection", (socket) => {
   console.log(`a user connected: ${socket.id}`);
@@ -24,6 +24,22 @@ io.on("connection", (socket) => {
   if (userId) userSocketMap[userId] = socket.id;
 
   io.emit("onlineUsers", Object.keys(userSocketMap));
+
+  //Group Chat
+  //join room
+  socket.on("joinGroup", (groupId) => {
+    if (!groupId) {
+      console.log("Invalid groupId received:", groupId);
+      return;
+    }
+    socket.join(groupId);
+    console.log(`User ${socket.id} joined group ${groupId}`);
+  });
+  //leave room
+  socket.on("leaveGroup", (groupId) => {
+    socket.leave(groupId);
+    console.log(`User ${socket.id} left group ${groupId}`);
+  });
 
   socket.on("disconnect", () => {
     console.log(`a user disconnected: ${socket.id}`);

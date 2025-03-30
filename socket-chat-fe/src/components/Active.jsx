@@ -1,15 +1,16 @@
 import { useChatStore } from "@/store/useChatStore";
 import { useAuthStore } from "@/store/useAuthStore";
+import { useGroupStore } from "@/store/useGroupStore";
 import { getRandomBg } from "@/lib/utils";
 import { getRandomUserBg } from "@/lib/utils";
 
 const Active = () => {
   const { selectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
-
+  const { selectedGroup } = useGroupStore();
   return (
     <>
-      {selectedUser !== "Bonfire Bot" ? (
+      {selectedUser !== "Bonfire Bot" && !selectedGroup ? (
         <div className="w-80 max-xl:hidden bg-[var(--color-bl1)] border-l-2 border-[var(--color-bl1)] mt-4 text-[var(--color-lg4)]">
           <div className={`h-28 relative ${getRandomBg()} `}>
             <div className="absolute top-16 left-2">

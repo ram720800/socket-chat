@@ -90,7 +90,7 @@ const ChatContainer = () => {
             <div className="my-6 mx-4 w-auto h-[0.1px] bg-wl3/80 shadow-2xl"></div>
 
             {messages.map((message) => (
-              <div key={message._id} ref={messageEndRef}>
+              <div key={message._id} ref={messageEndRef} className="">
                 <div className="space-y-4 flex gap-3 items-start mx-1 hover:bg-bl2 p-2 rounded-md">
                   <img
                     src={
