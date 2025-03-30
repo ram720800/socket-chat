@@ -98,7 +98,7 @@ const Sidebar = () => {
                   </div>
                 </div>
               </Link>
-              <div>
+              <div className="max-sm:mr-12">
                 <Link to="/profile" className="flex-shrink-0">
                   <div className="hover:bg-bl3 p-1 rounded">
                     <img src="/images/gear.svg" alt="gear" className="size-5" />

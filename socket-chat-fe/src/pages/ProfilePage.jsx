@@ -41,7 +41,7 @@ export const ProfilePage = () => {
     <div className="flex justify-center items-center w-full min-h-screen g2">
       <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute"></div>
 
-      <Card className="w-[300px] md:w-[600px] transition-all delay-5 bg-bl3 border-none mt-4 relative">
+      <Card className="w-[344px] md:w-[600px] transition-all delay-5 bg-bl3 border-none mt-4 relative">
         <Link
           to="/chat"
           className="absolute z-50 top-2 right-2 p-1 rounded-full border-2 border-wl3 transition"
