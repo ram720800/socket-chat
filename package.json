@@ -1,0 +1,13 @@
+{
+  "name": "socket-chat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix socket-chat-be && npm install --prefix socket-chat-fe && npm run build --prefix socket-chat-fe ",
+    "start":"npm run start --prefix socket-chat-be"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

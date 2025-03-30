@@ -7,6 +7,9 @@ import { connectDB } from "./lib/db.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import { app, server } from "./lib/socket.js";
+import path from "path";
+
+const __dirname = path.resolve();
 
 dotenv.config();
 app.use(express.json({ limit: "50mb" }));
@@ -21,6 +24,16 @@ app.use(
 app.use("/api/auth", authRouter);
 app.use("/api/messages", messageRouter);
 app.use("/api/groups", groupRouter);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../socket-chat-fe/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.join(__dirname, "../socket-chat-fe", "dist", "index.html")
+    );
+  });
+}
 
 const PORT = process.env.PORT;
 server.listen(PORT, () => {
