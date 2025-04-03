@@ -76,14 +76,14 @@ const GroupMembersContainer = () => {
             Group removal
           </div>
           <p className="text-wl3 text-xs mb-2">
-            Disabling group means you cannot recover it at any time after taking
+            Deleting group means you cannot recover it at any time after taking
             this action
           </p>
           <Button
             className="bg-bl2 border border-r3 hover:bg-r3 rounded-md p-2 text-wl2 text-xs"
             onClick={() => disableGroup(selectedGroup._id)}
           >
-            Disable Group
+            Delete Group
           </Button>
         </div>
       )}

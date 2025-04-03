@@ -95,7 +95,7 @@ export const LandingPage = () => {
           </div>
         </div>
 
-        <div className="relative my-32">
+        <div className="relative my-2 sm:my-32">
           <ParallaxImage
             src="/images/fry_sc.png"
             alt="fry"
@@ -129,7 +129,7 @@ export const LandingPage = () => {
           </div>
         </div>
 
-        <div className="relative my-40">
+        <div className="relative my-20 sm:my-40">
           <div className="relative z-10 bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg rounded-4xl">
             <div className="flex flex-col-reverse md:flex-row-reverse justify-between items-center">
               <div className="relative w-[340px] md:w-[648px]">
@@ -157,10 +157,10 @@ export const LandingPage = () => {
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
 
-        <div className="my-40 relative">
+        <div className="relative my-20 sm:my-40">
           <div className="bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg rounded-4xl">
             <div className="flex flex-col-reverse md:flex-row justify-between items-center">
               <div className="relative w-[340px] md:w-[648px]">
@@ -200,7 +200,7 @@ export const LandingPage = () => {
           </div>
         </div>
 
-        <div className="mt-40 mb-16 relative">
+        <div className="relative my-20 sm:my-40">
           <div className="bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg rounded-4xl">
             <div className="flex flex-col-reverse md:flex-row-reverse justify-between items-center">
               <div className="relative w-[340px] md:w-[648px]">
@@ -235,8 +235,44 @@ export const LandingPage = () => {
           </div>
         </div>
 
+        <div className="relative my-20 sm:my-40">
+          <div className="relative z-10 bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg rounded-4xl">
+            <div className="flex flex-col-reverse md:flex-row justify-between items-center">
+              <div className="relative w-[340px] md:w-[648px]">
+                <div className="relative px-8 py-4 lg:px-32 lg:py-16 m-6 g6 rounded-4xl">
+                  <img
+                    src="/images/group-chat.png"
+                    alt="group-chat"
+                    className="rounded-xl lg:rounded-2xl lg:hover:scale-105 lg:transition-all lg:duration-500"
+                  />
+                </div>
+              </div>
+              <div className="relative w-[300px] md:w-[480px] mx-2 mt-4 md:mx-auto">
+                <div className="text-wl2 text-4xl text-start font-extrabold uppercase">
+                  Chat like you're in the same room by creating your own groups
+                </div>
+                <div className="body-1 text-start font-medium">
+                  Experience real-time, high-quality conversations with low
+                  latency, making it feel like you're brainstorming the next big
+                  idea with friends or colleagues. Whether you're discussing the
+                  latest tech trends, coding together, or sharing insights,
+                  Socket-Chat keeps you connected seamlessly.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute -top-225 left-250 -z-1">
+            <ParallaxImage
+              src="/images/round.png"
+              alt="ball"
+              initialTop={0}
+              speed={0.2}
+            />
+          </div>
+        </div>
+
         <div className="relative">
-        <div className="absolute -top-200 left-250 -z-1">
+          <div className="absolute -top-200 -z-1">
             <ParallaxImage
               src="/images/coin_sc.png"
               alt="ball"
@@ -244,20 +280,24 @@ export const LandingPage = () => {
               speed={0.2}
             />
           </div>
-        <div className="text-wl1 text-lg mx-auto md:text-2xl lg:text-4xl lg:mx-40 font-extrabold text-center">
-          YOU CAN'T SCROLL ANYMORE. BETTER GO CHAT.
-          <div className="mt-10 mb-32">
-            <Link to="/signup">
-              <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-sm py-1 px-2 rounded-xl md:text-xl">
-                Signup
-              </button>
-            </Link>
+          <div className="text-wl1 text-lg mx-auto md:text-2xl lg:text-4xl lg:mx-40 font-extrabold text-center">
+            YOU CAN'T SCROLL ANYMORE. BETTER GO CHAT.
+            <div className="mt-10 mb-32">
+              <Link to="/signup">
+                <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-sm py-1 px-2 rounded-xl md:text-xl">
+                  Signup
+                </button>
+              </Link>
+            </div>
+            <div className="flex items-center justify-center w-full">
+              <img
+                src="/images/socketChat.svg"
+                alt="sc"
+                className="w-[1200px]"
+              />
+            </div>
           </div>
-          <div className="flex items-center justify-center w-full">
-            <img src="/images/socketChat.svg" alt="sc" className="w-[1200px]" />
-          </div>
-          </div>
-          </div>
+        </div>
       </div>
       <div className="w-full bg-pc1/30 p-10">
         <div className="flex items-center justify-between">

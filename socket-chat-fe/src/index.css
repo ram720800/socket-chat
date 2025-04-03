@@ -154,7 +154,7 @@ input {
 /* START of Gradients */
 
 .g1 {
-  background: linear-gradient(180deg, #7289da 0%, #5865f2 100%);
+  background: linear-gradient(180deg, #191f36 0%, #5865f2 100%);
 }
 .g2 {
   background: linear-gradient(
@@ -175,7 +175,7 @@ input {
   background: linear-gradient(180deg, #520234 50%, #ef24a1 100%);
 }
 .g6 {
-  background: linear-gradient(90deg, #433c5a 0%, #3b2e90 100%);
+  background: linear-gradient(180deg, #433c5a 0%, #3b2e90 100%);
 }
 
 .container {

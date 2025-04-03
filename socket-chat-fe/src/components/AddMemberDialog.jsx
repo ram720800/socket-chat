@@ -21,7 +21,7 @@ const AddMemberDialog = ({ isOpen, onClose }) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="w-[320px] md:w-[400px] bg-bl2 txt-wl1 rounded-xl z-50">
+      <DialogContent className="w-[320px] md:w-[400px] bg-bl2 txt-wl1 rounded-xl z-250">
         <DialogHeader>
           <DialogTitle className="text-wl1 text-start text-lg">
             Create your Group
