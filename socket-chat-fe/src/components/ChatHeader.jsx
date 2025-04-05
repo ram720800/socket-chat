@@ -3,12 +3,21 @@ import { useChatStore } from "@/store/useChatStore";
 import { getRandomUserBg } from "@/lib/utils";
 
 const ChatHeader = () => {
-  const { selectedUser } = useChatStore();
+  const { selectedUser, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
   return (
     <div className="w-full size-12 bg-[var(--color-bl3)] drop-shadow-2xl">
       <div className="flex items-center justify-between">
-        <div className="flex items-center">         
+        <div className="flex items-center"> 
+        <div className="absolute z-100 cursor-pointer">
+            <button onClick={() => setSelectedUser(null)} className="p-2">
+              <img
+                src="/images/arrow.png"
+                alt="arrow back"
+                className="size-6 cursor-pointer"
+              />
+            </button>
+          </div>
           <div className="relative p-2 ml-8">
             <img
               src={selectedUser.profilePic || "/sc_mini.svg"}

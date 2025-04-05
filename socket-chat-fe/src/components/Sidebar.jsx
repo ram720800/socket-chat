@@ -16,11 +16,9 @@ const Sidebar = () => {
     getUsers();
   }, [getUsers]);
 
-  if (isUsersLoading) return <ChatSkeleton />;
-
   return (
     <aside
-      className={`h-full w-[354px] md:w-64 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 bg-[var(--color-bl2)] ${
+      className={`h-full w-[354px] md:w-64 border-r-2 border-[var(--color-bl1)] rounded-tl-lg bg-[var(--color-bl2)] ${
         selectedUser || selectedGroup ? "hidden md:block" : "block"
       }`}
     >
@@ -40,39 +38,43 @@ const Sidebar = () => {
       </div>
       <div className="h-[calc(100vh-180px)] overflow-y-auto scroll-hidden">
         <div className="w-[354px] md:w-64 py-3">
-          {users.map((user) => (
-            <button
-              key={user._id}
-              onClick={() => setSelectedUser(user)}
-              className={`p-3 flex items-center gap-2 transition-colors w-full rounded-lg hover:bg-bl3 my-1
+          {isUsersLoading ? (
+            <ChatSkeleton />
+          ) : (
+            users.map((user) => (
+              <button
+                key={user._id}
+                onClick={() => setSelectedUser(user)}
+                className={`p-3 flex items-center gap-2 transition-colors w-full rounded-lg hover:bg-bl3 my-1
               ${selectedUser?._id === user._id ? "bg-[var(--color-dg3)]" : ""}`}
-            >
-              <div className="relative">
-                <img
-                  src={user.profilePic || "/sc_mini.svg"}
-                  alt={user.fullName}
-                  className={`size-10 rounded-full object-cover ${getRandomUserBg(
-                    user._id
-                  )}`}
-                />
-                <span
-                  className={`absolute size-4 bottom-0 right-0 rounded-full ${
-                    onlineUsers.includes(user._id)
-                      ? "bg-[var(--color-g1)] border-4 border-[var(--color-bl1)]"
-                      : "bg-[var(--color-lg4)] border-4 border-[var(--color-bl2)]"
-                  } `}
-                ></span>
-              </div>
-              <div className="text-left ml-2 relative">
-                <div className="font-medium text-md text-[var(--color-lg4)]">
-                  {user.fullName}
+              >
+                <div className="relative">
+                  <img
+                    src={user.profilePic || "/sc_mini.svg"}
+                    alt={user.fullName}
+                    className={`size-10 rounded-full object-cover ${getRandomUserBg(
+                      user._id
+                    )}`}
+                  />
+                  <span
+                    className={`absolute size-4 bottom-0 right-0 rounded-full ${
+                      onlineUsers.includes(user._id)
+                        ? "bg-[var(--color-g1)] border-4 border-[var(--color-bl1)]"
+                        : "bg-[var(--color-lg4)] border-4 border-[var(--color-bl2)]"
+                    } `}
+                  ></span>
                 </div>
-                <div className="font-medium text-[10px] text-[var(--color-lg4)]">
-                  {user.interests}
+                <div className="text-left ml-2 relative">
+                  <div className="font-medium text-md text-[var(--color-lg4)]">
+                    {user.fullName}
+                  </div>
+                  <div className="font-medium text-[10px] text-[var(--color-lg4)]">
+                    {user.interests}
+                  </div>
                 </div>
-              </div>
-            </button>
-          ))}
+              </button>
+            ))
+          )}
           <div className="mt-10 w-[354px] md:w-64 h-auto bottom-0 fixed">
             <div className="p-2 bg-[var(--color-dg3)] flex items-center justify-between">
               <Link to="/profile" className="flex-shrink-0">

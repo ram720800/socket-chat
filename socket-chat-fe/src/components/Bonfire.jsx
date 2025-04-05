@@ -3,7 +3,7 @@ import { useChatStore } from "@/store/useChatStore";
 const Bonfire = () => {
   const { setSelectedUser } = useChatStore();
   return (
-    <div className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] relative">
+    <div className="w-full flex flex-1 flex-col bg-[var(--color-bl3)] relative">
       <div className="flex items-center gap-2 w-[100%] size-12 bg-[var(--color-bl3)] drop-shadow-2xl">
         <button
           className="relative z-100"

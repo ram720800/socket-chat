@@ -8,7 +8,7 @@ import { ChatingPage } from "./pages/ChatingPage";
 import { useAuthStore } from "./store/useAuthStore";
 import { useEffect } from "react";
 import { Loader } from "lucide-react";
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const { authUser, me, isMeAuth, onlineUsers } = useAuthStore();
@@ -23,8 +23,8 @@ function App() {
 
   if (isMeAuth && !authUser)
     return (
-      <div className="flex items-center justify-center h-screen">
-        <Loader className="s-20 animate-spin" />
+      <div className="flex items-center justify-center h-screen bg-bl1">
+        <Loader className="s-20 animate-spin text-wl1" />
       </div>
     );
 
@@ -34,11 +34,15 @@ function App() {
         <Route path="/" element={<LandingPage />} />
         <Route
           path="/signup"
-          element={!authUser ? <SignUpPage type="signup" /> : <Navigate to="/chat" />}
+          element={
+            !authUser ? <SignUpPage type="signup" /> : <Navigate to="/chat" />
+          }
         />
         <Route
           path="/signin"
-          element={!authUser ? <SignInPage type="signin" /> : <Navigate to="/chat" />}
+          element={
+            !authUser ? <SignInPage type="signin" /> : <Navigate to="/chat" />
+          }
         />
         <Route
           path="/profile"
@@ -50,7 +54,7 @@ function App() {
         />
       </Routes>
 
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }

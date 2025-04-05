@@ -1,6 +1,6 @@
 const NoActive = () => {
   return (
-    <div className="relative w-72 max-xl:hidden bg-bl3 border-l-2 border-[var(--color-bl1)] mt-4 p-2">
+    <div className="relative w-72 max-xl:hidden bg-bl3 border-l-2 border-[var(--color-bl1)] p-2">
       <div className="my-4 text-center ml-2 font-bold text-xl text-wl1 z-100">
         Active Now
       </div>

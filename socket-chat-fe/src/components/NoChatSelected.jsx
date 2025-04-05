@@ -14,7 +14,7 @@ const NoChatSelected = () => {
   );
 
   return (
-    <div className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] relative">
+    <div className="w-full flex flex-1 flex-col bg-[var(--color-bl3)] relative">
       <div className="w-full absolute top-0 size-12 bg-[var(--color-bl2)] z-200">
         <div className="flex justify-start items-center gap-x-2 mx-1 py-2">
           <img src="/images/sc_friends.svg" alt="friends" className="size-6" />

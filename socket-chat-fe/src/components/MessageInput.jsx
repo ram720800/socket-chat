@@ -1,6 +1,7 @@
 import { useChatStore } from "@/store/useChatStore";
 import { useGroupStore } from "@/store/useGroupStore";
 import { useRef, useState } from "react";
+import { Textarea } from "@/components/ui/textarea";
 import toast from "react-hot-toast";
 
 const MessageInput = () => {
@@ -8,6 +9,7 @@ const MessageInput = () => {
   const { selectedGroup, sendGroupMessage } = useGroupStore();
   const [text, setText] = useState("");
   const [preview, setPreview] = useState(null);
+  const [loadingImg, setLoadingImg] = useState(false);
   const fileInputRef = useRef(null);
 
   const convertImageToBase64 = (file) => {
@@ -25,12 +27,20 @@ const MessageInput = () => {
       toast.error("please select an image");
       return;
     }
-    const base64 = await convertImageToBase64(file);
-    setPreview(base64);
+    setLoadingImg(true);
+    try {
+      const base64 = await convertImageToBase64(file);
+      setPreview(base64);
+    } catch (error) {
+      toast.error("Failed to load image");
+    } finally {
+      setLoadingImg(false);
+    }
   };
 
   const removeImage = () => {
     setPreview(null);
+    setLoadingImg(false);
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
@@ -67,6 +77,12 @@ const MessageInput = () => {
               alt="preview"
               className="size-20 object-cover object-center rounded-md border border-bl2 bg-bl1"
             />
+            {loadingImg && (
+              <div className="absolute inset-0 bg-bl2/60 flex items-center justify-center rounded-md z-10">
+                <div className="animate-spin rounded-full h-6 w-6 border-t-2 border-wl1"></div>
+              </div>
+            )}
+
             <button
               type="button"
               onClick={removeImage}
@@ -78,11 +94,9 @@ const MessageInput = () => {
         </div>
       )}
 
-      <form onSubmit={handleSendMessage} className="flex items-center gap-2">
-        <div className="flex flex-1 gap-2 relative">
-          <textarea
-            type="text"
-            name="text"
+      <form onSubmit={handleSendMessage}>
+        <div className="relative flex w-full shadow-md flex-col">
+          <Textarea
             placeholder={
               selectedUser
                 ? `Message @${selectedUser.fullName}`
@@ -91,14 +105,8 @@ const MessageInput = () => {
                 : "Type a message..."
             }
             value={text}
-            onChange={(e) => {
-              setText(e.target.value);
-              e.target.style.height = "auto";
-              e.target.style.height = `${e.target.scrollHeight}px`;
-            }}
-            rows={1}
-            className="text-wl1 border-none outline-none focus:ring-0 z-50 bg-[var(--color-bl2)] shadow-2xl px-6 py-3 rounded-lg text-lg font-medium w-full resize-none 
-    overflow-y-auto pr-20"
+            onChange={(e) => setText(e.target.value)}
+            className="w-full border border-lg4/20 text-wl1 z-50 bg-bl2 font-medium"
           />
           <input
             type="file"
@@ -107,20 +115,25 @@ const MessageInput = () => {
             ref={fileInputRef}
             onChange={handleImageChange}
           />
-          <button
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            className="absolute right-14 top-1/2 -translate-y-1/2 z-50 p-1 hover:bg-dg3 rounded-md cursor-pointer"
-          >
-            <img src="/images/image.svg" alt="img" className="size-6" />
-          </button>
-          <button
-            type="submit"
-            disabled={!(Boolean(text.trim()) || Boolean(preview))}
-            className="absolute right-3 top-1/2 -translate-y-1/2 z-50 p-1 hover:bg-dg3 rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <img src="/images/send.svg" alt="send" className="size-6" />
-          </button>
+
+          <div className="absolute bottom-2 flex items-center gap-2 mt-4 ml-4">
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="z-50 p-1 bg-dg3 border border-lg4/20 rounded-md cursor-pointer"
+            >
+              <img src="/images/image.svg" alt="img" className="size-6" />
+            </button>
+          </div>
+          <div className="absolute bottom-2 right-3 flex items-center gap-2 mt-4 mr-2">
+            <button
+              type="submit"
+              disabled={!(Boolean(text.trim()) || Boolean(preview))}
+              className="z-50 p-1 bg-dg3 border border-lg4/20 rounded-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <img src="/images/send.svg" alt="send" className="size-6" />
+            </button>
+          </div>
         </div>
       </form>
     </div>

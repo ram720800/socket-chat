@@ -5,11 +5,9 @@ import { MessageSkeleton } from "./Animation";
 import { formatMessageTime, getRandomUserBg } from "@/lib/utils";
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
-import { motion } from "motion/react";
 
 const ChatContainer = () => {
   const {
-    users,
     messages,
     getMessages,
     isMessagesLoading,
@@ -53,31 +51,18 @@ const ChatContainer = () => {
   return (
     <>
       {selectedUser && (
-        <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 100 }}
-          transition={{ duration: 0.5 }}
-          className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] text-[var(--color-wl1)] relative"
-        >
-          <div className="absolute z-100 cursor-pointer">
-            <button onClick={() => setSelectedUser(null)} className="p-2">
-              <img
-                src="/images/arrow.png"
-                alt="arrow back"
-                className="size-6 cursor-pointer"
-              />
-            </button>
-          </div>
+        <div className="w-full flex flex-1 flex-col bg-[var(--color-bl3)] text-[var(--color-wl1)] relative">
           <ChatHeader />
 
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             <div className="mx-4 mt-4">
-              <div className="">
+              <div>
                 <img
                   src={selectedUser.profilePic || "/sc_mini.svg"}
                   alt={selectedUser.fullName}
-                  className={`size-20 rounded-full object-cover border-1 border-bl1 ${getRandomUserBg(selectedUser._id)}`}
+                  className={`size-20 rounded-full object-cover border-1 border-bl1 ${getRandomUserBg(
+                    selectedUser._id
+                  )}`}
                 />
               </div>
             </div>
@@ -99,7 +84,9 @@ const ChatContainer = () => {
                         : selectedUser.profilePic || "/sc_mini.svg"
                     }
                     alt="profile pic"
-                    className={`size-12 rounded-full object-cover ${getRandomUserBg(selectedUser._id)}`}
+                    className={`size-12 rounded-full object-cover ${getRandomUserBg(
+                      selectedUser._id
+                    )}`}
                   />
                   <div>
                     <div className="flex mx-2">
@@ -132,7 +119,7 @@ const ChatContainer = () => {
             ))}
           </div>
           <MessageInput />
-        </motion.div>
+        </div>
       )}
     </>
   );

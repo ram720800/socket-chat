@@ -11,7 +11,7 @@ const GroupChatContainer = () => {
   const [isGroupOpen, setIsGroupOpen] = useState(false);
 
   return (
-    <div className="w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)] relative">
+    <div className="w-full flex flex-1 flex-col bg-[var(--color-bl3)] relative">
       <div className="flex items-center justify-between gap-2 w-[100%] size-12 bg-[var(--color-bl3)] drop-shadow-2xl">
         <div className="flex items-center gap-2">
           <button

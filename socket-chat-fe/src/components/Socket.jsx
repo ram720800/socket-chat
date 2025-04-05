@@ -91,7 +91,7 @@ const Socket = () => {
             >
               <div
                 className={`absolute -left-5 size-3 rounded-full bg-wl1 transition-all duration-500 ease-in-out group-hover:h-6 ${
-                  selectedGroup ? "h-10" : ""
+                  selectedGroup?._id === group._id ? "h-10" : ""
                 }`}
               ></div>
               <button onClick={() => handelSelectGroup(group)}>
