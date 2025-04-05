@@ -48,7 +48,7 @@ const GroupMessageContainer = () => {
   return (
     <>
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        <div className="flex flex-col md:flex-row items-center gap-4">
+        <div className="flex flex-col xl:flex-row xl:items-center gap-4">
           <div className="mx-4 mt-4">
             <div>
               <img

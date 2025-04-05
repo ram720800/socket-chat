@@ -155,7 +155,7 @@ export const LandingPage = () => {
                   <img
                     src="/images/sigChat.png"
                     alt="single-chat"
-                    className="lg:hover:scale-105 lg:transition-all lg:duration-500 size-96 object-contain"
+                    className="lg:hover:scale-105 lg:transition-all lg:duration-500 size-56 md:size-96 object-contain"
                   />
                 </div>
               </div>
@@ -176,11 +176,11 @@ export const LandingPage = () => {
         </div>
 
         <div className="relative my-20 sm:my-40">
-          <div className="absolute -top-16 left-72 md:left-[604px] xl:-top-38 xl:left-[900px] z-200">
+          <div className="absolute -top-16 left-56 md:left-[604px] xl:-top-38 xl:left-[900px] z-200">
             <img
               src="/images/box.png"
               alt="box"
-              className="size-24 xl:size-60"
+              className="size-28 xl:size-60"
             />
           </div>
           <div className="relative z-10 bg-wl3/10 backdrop-blur-[100px] border border-wl1/20 shadow-lg/30 rounded-[44px]">
@@ -191,7 +191,7 @@ export const LandingPage = () => {
                     <img
                       src="/images/group.png"
                       alt="single-chat"
-                      className="lg:hover:scale-105 lg:transition-all lg:duration-500 object-contain size-96"
+                      className="lg:hover:scale-105 lg:transition-all lg:duration-500 size-56 md:size-96 object-contain"
                     />
                   </div>
                 </div>
@@ -222,7 +222,7 @@ export const LandingPage = () => {
                     <img
                       src="/images/user1.png"
                       alt="single-chat"
-                      className="lg:hover:scale-105 lg:transition-all lg:duration-500 object-contain size-96"
+                      className="lg:hover:scale-105 lg:transition-all lg:duration-500 size-56 md:size-96 object-contain"
                     />
                   </div>
                 </div>
@@ -243,7 +243,7 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
-          <div className="absolute -top-150 left-60 md:left-250 z-100">
+          <div className="absolute -top-150 left-56 md:left-250 z-100 size-28">
             <ParallaxImage
               src="/images/onion.png"
               alt="onion"
@@ -261,7 +261,7 @@ export const LandingPage = () => {
                   <img
                     src="/images/online.png"
                     alt="single-chat"
-                    className="lg:hover:scale-105 lg:transition-all lg:duration-500 h-96 object-contain"
+                    className="lg:hover:scale-105 lg:transition-all lg:duration-500 h-56 md:h-96 object-contain"
                   />
                 </div>
               </div>
@@ -296,7 +296,7 @@ export const LandingPage = () => {
                   <img
                     src="/images/group-chat.png"
                     alt="group-chat"
-                    className="lg:hover:scale-105 lg:transition-all lg:duration-500 size-96 object-contain"
+                    className="lg:hover:scale-105 lg:transition-all lg:duration-500 size-56 md:size-96 object-contain"
                   />
                 </div>
               </div>
@@ -354,8 +354,8 @@ export const LandingPage = () => {
       </div>
       <div className="w-full bg-pc1/30 p-10">
         <div className="flex items-center justify-between">
-          <img src="/Sec-logo.svg" alt="sc" width={200} height={200} />
-          <h1 className="text-lg font-extrabold md:text-xl lg:text-4xl text-wl1">
+          <img src="/Sec-logo.svg" alt="sc" width={164} height={164} />
+          <h1 className="text-sm font-extrabold md:text-xl lg:text-4xl text-wl1">
             By Ram-r72.rr
           </h1>
         </div>
