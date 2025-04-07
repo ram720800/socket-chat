@@ -22,7 +22,11 @@ const GroupMessageContainer = () => {
     getGroupMessages(selectedGroup._id);
     subscribeToGroupMessage(selectedGroup._id);
 
-    return () => unSubscribeToGroupMessage();
+    return () => {
+      if (selectedGroup?._id) {
+        unSubscribeToGroupMessage(selectedGroup._id);
+      }
+    };
   }, [
     selectedGroup?._id,
     getGroupMessages,
@@ -31,7 +35,7 @@ const GroupMessageContainer = () => {
   ]);
 
   useEffect(() => {
-    if (messageEndRef.current) {
+    if (messageEndRef.current && groupMessages) {
       messageEndRef.current.scrollIntoView({ behaviour: "smooth" });
     }
   }, [groupMessages]);

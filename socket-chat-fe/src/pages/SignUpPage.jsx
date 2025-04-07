@@ -21,7 +21,7 @@ export const SignUpPage = () => {
     fullName: "",
     password: "",
     email: "",
-    interests:"",
+    interests: "",
   });
 
   const { signUp, isSigningUp } = useAuthStore();
@@ -51,7 +51,7 @@ export const SignUpPage = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen g2">
+    <div className="relative flex justify-center items-center min-h-screen g2">
       <div className="bg-[url('/sc_bg_img.png')] bg-cover bg-center h-screen w-full absolute">
         <AnimatedBG2 />
       </div>
@@ -79,7 +79,7 @@ export const SignUpPage = () => {
               className="border-none bg-[var(--color-bl1)]"
             />
             <span className="text-xs font-bold uppercase text-[var(--color-wl3)]">
-             Show off your interests!
+              Show off your interests!
             </span>
             <Input
               type="text"

@@ -2,9 +2,24 @@ import { Link } from "react-router-dom";
 import { useAuthStore } from "@/store/useAuthStore";
 import ParallaxImage from "@/components/Animation";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 export const LandingPage = () => {
   const { authUser } = useAuthStore();
+  const [onScroll, setOnScroll] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 32) {
+        setOnScroll(true);
+      } else {
+        setOnScroll(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener;
+  }, []);
+
   return (
     <div className="g2 relative h-full w-full overflow-hidden pt-5 md:pt-10 overflow-x-hidden">
       <div
@@ -17,28 +32,34 @@ export const LandingPage = () => {
         }}
       ></div>
       <div className="container relative z-100">
-        <div className="flex justify-between items-center">
-          <div>
-            <img src="/Sec-logo.svg" alt="socket" width={180} height={125} />
-          </div>
-          <div className="flex items-center gap-2 md:gap-4">
-            {!authUser ? (
-              <Link to="/signup">
+        <header
+          className={`fixed top-0 left-0 w-full z-250 transition-all duration-500 max-lg:py-4 px-12 max-lg:px-4 ${
+            onScroll ? "py-2 max-md:bg-b1 backdrop-blur-[8px]" : "py-10"
+          }`}
+        >
+          <div className="flex justify-between items-center">
+            <div>
+              <img src="/Sec-logo.svg" alt="socket" width={180} height={125} />
+            </div>
+            <div className="flex items-center gap-2 md:gap-4">
+              {!authUser ? (
+                <Link to="/signup">
+                  <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-xs py-1 px-2 rounded-xl md:text-sm">
+                    Signup
+                  </button>
+                </Link>
+              ) : (
+                ""
+              )}
+
+              <Link to="/signin">
                 <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-xs py-1 px-2 rounded-xl md:text-sm">
-                  Signup
+                  Signin
                 </button>
               </Link>
-            ) : (
-              ""
-            )}
-
-            <Link to="/signin">
-              <button className="bg-wl1 hover:bg-wl3 border-2 border-wl2 text-bl1 font-semibold text-xs py-1 px-2 rounded-xl md:text-sm">
-                Signin
-              </button>
-            </Link>
+            </div>
           </div>
-        </div>
+        </header>
 
         <div className="relative flex flex-col-reverse md:flex-row items-center justify-between gap-10 mt-20">
           <div className="w-[320px] md:w-[480px]">
@@ -243,7 +264,7 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
-          <div className="absolute -top-150 left-56 md:left-250 z-100 size-28">
+          <div className="absolute -top-150 left-56 md:left-240 z-100 max-md:size-28">
             <ParallaxImage
               src="/images/onion.png"
               alt="onion"
@@ -278,7 +299,7 @@ export const LandingPage = () => {
               </div>
             </div>
           </div>
-          <div className="absolute -top-200 -z-1">
+          <div className="absolute -top-180 -z-1">
             <ParallaxImage
               src="/images/ball_sc.png"
               alt="ball"
@@ -352,11 +373,17 @@ export const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="w-full bg-pc1/30 p-10">
+      <div className="w-full bg-pc1/30 max-md:bg-pc1 py-10 max-lg:py-4 px-12 max-lg:px-4">
         <div className="flex items-center justify-between">
           <img src="/Sec-logo.svg" alt="sc" width={164} height={164} />
-          <h1 className="text-sm font-extrabold md:text-xl lg:text-4xl text-wl1">
-            By Ram-r72.rr
+          <h1 className="text-sm font-extrabold md:text-xl lg:text-4xl text-wl1 z-100">
+            <a
+              href="https://www.linkedin.com/in/ramesh-n-536355287"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              By Ram-r72.rr
+            </a>
           </h1>
         </div>
       </div>

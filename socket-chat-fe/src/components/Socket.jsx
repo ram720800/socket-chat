@@ -56,8 +56,11 @@ const Socket = () => {
               }`}
             />
           </button>
-          <div className="absolute left-[4rem] top-1/2 transform -translate-y-1/2 bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none z-20">
-            Direct Messages
+          <div className="fixed left-[4.5rem] top-auto bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none z-100">
+            <div className="flex items-center gap-2">
+              <img src="/images/Own.svg" alt="own" className="size-6" />
+              <div>Direct Messages</div>
+            </div>
           </div>
         </div>
 
@@ -76,8 +79,11 @@ const Socket = () => {
               className="size-12 cursor-pointer group-hover:rounded-full transition-all duration-100"
             />
           </button>
-          <div className="absolute left-[4rem] top-1/2 transform -translate-y-1/2 bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none z-20">
-            Bonfire Bot
+          <div className="fixed left-[4.5rem] top-auto bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none z-50">
+            <div className="flex items-center gap-2">
+              <img src="/images/Own.svg" alt="own" className="size-6" />
+              <div>Bonfire Bot</div>
+            </div>
           </div>
         </div>
         {isGroupsLoading ? (
@@ -103,22 +109,24 @@ const Socket = () => {
                   )}`}
                 />
               </button>
-              <div className="absolute left-[4rem] top-1/2 transform -translate-y-1/2 bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none z-20">
-                {group.groupName}
+              <div className="fixed left-[4.5rem] top-auto bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none z-50">
+                <div className="flex items-center gap-2">
+                  <img src="/images/LVL.svg" alt="level" className="size-6" />
+                  <div>{group.groupName}</div>
+                </div>
               </div>
             </div>
           ))
         )}
-        <div className="relative">
-          <div className="group relative z-10">
-            <button
-              className="rounded-xl bg-bl3 hover:bg-b1 p-3 cursor-pointer transition-all duration-300"
-              onClick={() => setIsCreatedServerOpen(true)}
-            >
-              <Plus className="size-6 rounded-full bg-wl1" />
-            </button>
-          </div>
-          <div className="absolute left-[4rem] top-1/2 transform -translate-y-1/2 bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none z-20">
+
+        <div className="group relative flex justify-center items-center">
+          <button
+            className="rounded-xl bg-bl3 hover:bg-b1 p-3 cursor-pointer transition-all duration-300"
+            onClick={() => setIsCreatedServerOpen(true)}
+          >
+            <Plus className="size-6 rounded-full bg-wl1" />
+          </button>
+          <div className="fixed left-[4.5rem] top-auto bg-bl1 text-wl1 text-sm font-semibold px-3 py-1 rounded opacity-0 scale-90 group-hover:opacity-100 whitespace-nowrap group-hover:scale-100 transition-all duration-300 max-sm:hidden pointer-events-none z-100">
             Add group
           </div>
         </div>

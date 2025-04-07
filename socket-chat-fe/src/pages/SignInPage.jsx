@@ -37,7 +37,11 @@ export const SignInPage = () => {
       <div className="bg-[url('/sc_bg_img.png')] bg-center bg-cover w-full h-screen absolute">
         <AnimatedBG1 />
       </div>
-
+      <Link to="/">
+        <div className="absolute top-8 left-4">
+          <img src="/Sec-logo.svg" alt="socket" width={180} height={125} />
+        </div>
+      </Link>
       <Card className="w-[400px] z-20 bg-[var(--color-bl2)] border-none mt-4 fixed max-lg:mt-6 max-lg:w-[300px]">
         <CardHeader>
           <CardTitle className="text-center text-[var(--color-wl2)] text-2xl font-bold">

@@ -6,7 +6,7 @@ const ChatHeader = () => {
   const { selectedUser, setSelectedUser } = useChatStore();
   const { onlineUsers } = useAuthStore();
   return (
-    <div className="w-full size-12 bg-[var(--color-bl3)] drop-shadow-2xl">
+    <div className="w-full size-12 bg-bl3 shadow-bl3 drop-shadow-2xl fixed top-0 z-50">
       <div className="flex items-center justify-between">
         <div className="flex items-center"> 
         <div className="absolute z-100 cursor-pointer">

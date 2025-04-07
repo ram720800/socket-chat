@@ -68,7 +68,7 @@ const MessageInput = () => {
   };
 
   return (
-    <div className="p-4 w-full">
+    <div className="py-3 px-4 w-full bg-bl3">
       {preview && (
         <div className="mb-3 flex items-center gap-2">
           <div className="relative">

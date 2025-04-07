@@ -46,8 +46,8 @@ export const ChatSkeleton = () => {
 };
 export const MessageSkeleton = () => {
   return (
-    <div className="space-y-12 w-full flex flex-1 flex-col mt-4 bg-[var(--color-bl3)]">
-      {[...Array(3)].map((_, index) => (
+    <div className="space-y-12 w-full flex flex-1 flex-col mt-12 bg-[var(--color-bl3)]">
+      {[...Array(2)].map((_, index) => (
         <div key={index} className="flex gap-3 items-start mx-1">
           <Skeleton className="h-12 w-12 rounded-full bg-bl2" />
           <div className="space-y-2">
@@ -62,7 +62,7 @@ export const MessageSkeleton = () => {
 export const SocketSkeleton = () => {
   return (
     <div className="space-y-6 min-w-[4.5rem] mt-4 bg-[var(--color-bl1)]">
-      {[...Array(6)].map((_, index) => (
+      {[...Array(4)].map((_, index) => (
         <div key={index} className="relative z-100 flex justify-center items-center">
           <Skeleton className="h-12 w-12 rounded-md bg-bl3" />
         </div>
