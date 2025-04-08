@@ -31,7 +31,7 @@ export const ChatSkeleton = () => {
   const { selectedUser } = useChatStore();
   return (
     <div
-      className={`h-full w-64 space-y-4 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 py-1 bg-[var(--color-bl2)] ${
+      className={`h-full w-[354px] md:w-64 space-y-4 border-r-2 border-[var(--color-bl1)] rounded-tl-lg mt-4 mx-3 py-1 bg-[var(--color-bl2)] ${
         selectedUser ? "hidden md:block" : "block"
       }`}
     >

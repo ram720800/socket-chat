@@ -46,7 +46,7 @@ const Bonfire = () => {
         <div className="my-6 mx-4 w-auto h-[0.1px] bg-lg4 shadow-2xl"></div>
 
         <div className="flex justify-center items-center text-r3">
-          This is the official bot of socketChat. Upcomming in v2
+          This is the official bot of socketChat. Upcoming in v2
         </div>
       </div>
     </div>

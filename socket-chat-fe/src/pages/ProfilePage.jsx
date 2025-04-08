@@ -59,18 +59,18 @@ export const ProfilePage = () => {
               <img
                 src={selectedImg || authUser.profilePic || "/sc_mini.svg"}
                 alt="user Avatar"
-                className={`relative top-14 left-4 size-24 rounded-full object-cover border-[6px] border-bl1 ${getRandomUserBg(authUser._id)}`}
+                className={`relative top-14 left-4 size-24 rounded-full object-cover border-[6px] border-bl1 ${getRandomUserBg(
+                  authUser._id
+                )}`}
               />
               <label
                 htmlFor="avatar-upload"
-                className={`absolute right-8 my-2 hover:scale-105 p-1 rounded-sm cursor-pointer transition-all duration-500 bg-b1 hover:bg-db2 text-wl1 text-sm max-sm:text-xs font-medium max-w-fit w-32`}
+                className={`absolute right-8 my-2 p-2 rounded-sm cursor-pointer transition-all duration-500 bg-b1 hover:bg-db2 text-wl1 text-sm max-sm:text-xs font-medium text-center w-32`}
               >
                 {isUpdating ? (
-                  <>
-                    <Loader className="s-7 animate-spin" />
-                  </>
+                  <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-wl1 mx-auto"></div>
                 ) : (
-                  "Edit User Profile"
+                  "Edit Profile Pic"
                 )}
                 <input
                   type="file"
@@ -83,26 +83,26 @@ export const ProfilePage = () => {
               </label>
             </div>
             <div className="w-full">
-            <div className="bg-bl2 h-auto rounded-md p-4 mt-12 mx-3 mb-3">
-              <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
-                Display Name
+              <div className="bg-bl2 h-auto rounded-md p-4 mt-12 mx-3 mb-3">
+                <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
+                  Display Name
+                </div>
+                <div className=" text-sm text-wl1 font-normal mb-2">
+                  {authUser.fullName}
+                </div>
+                <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
+                  email
+                </div>
+                <div className=" text-sm text-wl1 font-normal mb-2">
+                  {authUser.email}
+                </div>
+                <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
+                  Your interests
+                </div>
+                <div className=" text-sm text-wl1 font-normal mb-2">
+                  {authUser?.interests || "#User"}
+                </div>
               </div>
-              <div className=" text-sm text-wl1 font-normal mb-2">
-                {authUser.fullName}
-              </div>
-              <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
-                email
-              </div>
-              <div className=" text-sm text-wl1 font-normal mb-2">
-                {authUser.email}
-              </div>
-              <div className="uppercase text-start font-bold text-xs text-wl3 mb-0.5">
-                Your interests
-              </div>
-              <div className=" text-sm text-wl1 font-normal mb-2">
-                {authUser?.interests || "#User"}
-              </div>
-            </div>
             </div>
           </div>
         </CardContent>
@@ -117,7 +117,10 @@ export const ProfilePage = () => {
             <div className="uppercase text-xs text-wl3 font-bold my-1">
               Account removal
             </div>
-            <p className="text-wl3 text-xs mb-2">Disabling account means you can recover it at any time after taking this action</p>
+            <p className="text-wl3 text-xs mb-2">
+              Disabling account means you can recover it at any time after
+              taking this action
+            </p>
             <div>
               <Button
                 onClick={logOut}

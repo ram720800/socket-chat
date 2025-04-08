@@ -12,8 +12,8 @@ const Active = () => {
     <>
       {selectedUser !== "Bonfire Bot" && !selectedGroup ? (
         <div className="w-80 max-xl:hidden bg-[var(--color-bl1)] border-l-2 border-[var(--color-bl1)] text-[var(--color-lg4)]">
-          <div className={`h-28 relative ${getRandomBg()} `}>
-            <div className="absolute top-16 left-2">
+          <div className={`h-44 relative ${getRandomBg()} `}>
+            <div className="absolute top-32 left-2">
               <img
                 src={selectedUser.profilePic || "/sc_mini.svg"}
                 alt={selectedUser.fullName}
