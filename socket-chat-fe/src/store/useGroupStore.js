@@ -102,13 +102,9 @@ export const useGroupStore = create((set, get) => ({
     }
   },
   sendGroupMessage: async (messageData) => {
-    const { groupMessages, selectedGroup } = get();
+    const { selectedGroup } = get();
     try {
-      const res = await instance.post(
-        `/groups/send/${selectedGroup._id}`,
-        messageData
-      );
-      set({ groupMessages: [...groupMessages, res.data] });
+      await instance.post(`/groups/send/${selectedGroup._id}`, messageData);
     } catch (error) {
       toast.error(error.response.data.message);
     }
